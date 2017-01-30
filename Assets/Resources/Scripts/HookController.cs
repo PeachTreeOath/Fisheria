@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,10 +12,13 @@ public class HookController : MonoBehaviour
     private float lineSpeed;
     private float yLimit;
     private CastState castState;
+    private Vector2 origPos;
+    private FishermanController.CastDelegate endCb; // Callback to call when cast ends
 
     // Use this for initialization
     void Start()
     {
+        origPos = transform.localPosition;
         castState = CastState.READY;
     }
 
@@ -25,6 +29,11 @@ public class HookController : MonoBehaviour
         {
             float newY = transform.position.y + (lineSpeed * Time.deltaTime);
             transform.position = new Vector2(transform.position.x, newY);
+
+            if(transform.position.y > yLimit)
+            {
+                EndCast();
+            }
         }
     }
 
@@ -32,7 +41,14 @@ public class HookController : MonoBehaviour
     {
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
-        cb();
+        endCb = cb;
+    }
+
+    private void EndCast()
+    {
+        transform.localPosition = origPos;
+        castState = CastState.READY;
+        endCb();
     }
 
     public void Move(int direction)

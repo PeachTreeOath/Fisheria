@@ -24,8 +24,7 @@ public class FishermanController : MonoBehaviour
     void Start()
     {
         hook = GetComponentInChildren<HookController>();
-        castCallback = CastFinished;
-        hook.CastHook(castCallback, speedLevel, rangeLevel, rodLevel);
+        castCallback = CastFinished;       
     }
 
     // Update is called once per frame
@@ -65,12 +64,13 @@ public class FishermanController : MonoBehaviour
     private void CastRod()
     {
         castState = CastState.CASTING;
+        hook.CastHook(castCallback, speedLevel, rangeLevel, rodLevel);
     }
 
     // Callback when hook returns back to player
     public void CastFinished()
     {
-        Debug.Log("Cast finished");
+        castState = CastState.READY;
     }
 
 }
