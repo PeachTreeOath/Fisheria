@@ -70,7 +70,7 @@ public class FishermanController : MonoBehaviour
     // Callback when hook returns back to player
     public void CastFinished()
     {
-        Debug.Log("TEST");
+        Debug.Log("Cast finished");
     }
 
 }
