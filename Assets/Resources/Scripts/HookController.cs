@@ -12,12 +12,15 @@ public class HookController : MonoBehaviour
     private float lineSpeed;
     private float yLimit;
     private CastState castState;
+    private SpriteRenderer sprite;
     private Vector2 origPos;
     private FishermanController.CastDelegate endCb; // Callback to call when cast ends
 
     // Use this for initialization
     void Start()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = false;
         origPos = transform.localPosition;
         castState = CastState.READY;
     }
@@ -27,10 +30,9 @@ public class HookController : MonoBehaviour
     {
         if (castState == CastState.CASTING)
         {
-            float newY = transform.position.y + (lineSpeed * Time.deltaTime);
-            transform.position = new Vector2(transform.position.x, newY);
+            transform.position += transform.up * lineSpeed * Time.deltaTime;
 
-            if(transform.position.y > yLimit)
+            if (transform.position.y > yLimit)
             {
                 EndCast();
             }
@@ -39,6 +41,7 @@ public class HookController : MonoBehaviour
 
     public void CastHook(FishermanController.CastDelegate cb, int speedLevel, int rodLevel, int rangeLevel)
     {
+        sprite.enabled = true;
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
         endCb = cb;
@@ -46,12 +49,13 @@ public class HookController : MonoBehaviour
 
     private void EndCast()
     {
+        sprite.enabled = false;
         transform.localPosition = origPos;
         castState = CastState.READY;
         endCb();
     }
 
-    public void Move(int direction)
+    public void Move(float direction)
     {
         float newX = transform.position.x + (direction * moveSpeed * Time.deltaTime);
         transform.position = new Vector2(newX, transform.position.y);

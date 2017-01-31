@@ -5,6 +5,7 @@ using UnityEngine;
 public enum CastState {
 
     READY,
+    AIMING,
     CASTING,
     REELING
 }

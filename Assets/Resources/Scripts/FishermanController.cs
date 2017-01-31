@@ -15,6 +15,7 @@ public class FishermanController : MonoBehaviour
     public float speedBase;
     public float speedMult;
     private CastState castState;
+    private RodController rod;
     private HookController hook;
 
     public delegate void CastDelegate();
@@ -23,8 +24,9 @@ public class FishermanController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rod = GetComponentInChildren<RodController>();
         hook = GetComponentInChildren<HookController>();
-        castCallback = CastFinished;       
+        castCallback = CastFinished;
     }
 
     // Update is called once per frame
@@ -45,20 +47,39 @@ public class FishermanController : MonoBehaviour
 
             if (Input.GetButtonDown("FireA" + playerNum))
             {
+                AimRod();
+            }
+        }
+        else if (castState == CastState.AIMING)
+        {
+            if (Input.GetButtonDown("FireA" + playerNum))
+            {
+                float rodAngle = rod.EndSwing();
                 CastRod();
             }
+            else
+            {
+                float hValue = Input.GetAxis("Horizontal" + playerNum);
+                if (hValue != 0)
+                {
+                    rod.Move(hValue);
+                }
+            }
         }
-        else if(castState == CastState.CASTING)
+        else if (castState == CastState.CASTING)
         {
-            if (Input.GetAxis("Horizontal" + playerNum) < 0)
+            float hValue = Input.GetAxis("Horizontal" + playerNum);
+            if (hValue != 0)
             {
-                hook.Move(-1);
-            }
-            else if (Input.GetAxis("Horizontal" + playerNum) > 0)
-            {
-                hook.Move(1);
+                hook.Move(hValue);
             }
         }
+    }
+
+    private void AimRod()
+    {
+        castState = CastState.AIMING;
+        rod.SwingRod();
     }
 
     private void CastRod()
