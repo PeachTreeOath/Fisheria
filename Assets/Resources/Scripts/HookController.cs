@@ -13,7 +13,6 @@ public class HookController : MonoBehaviour
     private float yLimit;
     private CastState castState;
     private SpriteRenderer sprite;
-    private Rigidbody2D rBody;
     private Vector2 origPos;
     private FishermanController.CastDelegate endCb; // Callback to call when cast ends
 
@@ -22,7 +21,6 @@ public class HookController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
-        rBody = GetComponent<Rigidbody2D>();
         origPos = transform.localPosition;
         castState = CastState.READY;
     }
