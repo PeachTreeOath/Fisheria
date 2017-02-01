@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BassController : MonoBehaviour {
+public class BassController : FishController {
 
     public enum BassType
     {
@@ -46,4 +47,8 @@ public class BassController : MonoBehaviour {
         }
     }
 
+    public override void AddToInventory()
+    {
+        throw new NotImplementedException();
+    }
 }

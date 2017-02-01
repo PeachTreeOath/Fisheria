@@ -13,15 +13,19 @@ public class HookController : MonoBehaviour
     private float yLimit;
     private CastState castState;
     private SpriteRenderer sprite;
+    private Vector2 origLocalPos;
     private Vector2 origPos;
     private FishermanController.CastDelegate endCb; // Callback to call when cast ends
+    private FishController hookedObject;
+    private Vector2 vectorDiff;
 
     // Use this for initialization
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
-        origPos = transform.localPosition;
+        origLocalPos = transform.localPosition;
+        origPos = transform.position;
         castState = CastState.READY;
     }
 
@@ -37,6 +41,16 @@ public class HookController : MonoBehaviour
                 EndCast();
             }
         }
+        else if (castState == CastState.REELING)
+        {
+            transform.Translate(vectorDiff * lineSpeed * Time.deltaTime);
+            hookedObject.transform.position = transform.position;
+            if(hookedObject.transform.position.y < origPos.y)
+            {
+                ProcessFish();
+                EndCast();
+            }
+        }
     }
 
     public void CastHook(FishermanController.CastDelegate cb, int speedLevel, int rodLevel, int rangeLevel)
@@ -47,18 +61,27 @@ public class HookController : MonoBehaviour
         endCb = cb;
     }
 
+    private void ProcessFish()
+    {
+        //TODO: Do proper fish rewards here
+        Destroy(hookedObject.gameObject);
+    }
+
     private void EndCast()
     {
         sprite.enabled = false;
-        transform.localPosition = origPos;
+        transform.localPosition = origLocalPos;
         castState = CastState.READY;
         endCb();
     }
 
     public void Move(float direction)
     {
-        float angle = -direction * moveSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.forward, angle);
+        if (castState == CastState.CASTING)
+        {
+            float angle = -direction * moveSpeed * Time.deltaTime;
+            transform.Rotate(Vector3.forward, angle);
+        }
     }
 
     private void SetVars(int speedLevel, int rodLevel, int rangeLevel)
@@ -66,5 +89,17 @@ public class HookController : MonoBehaviour
         moveSpeed = speedLevel * 10f;
         lineSpeed = 1 + rodLevel * 2;
         yLimit = -2 + rangeLevel * 1;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        FishController fish = col.gameObject.GetComponent<FishController>();
+
+        if (fish != null)
+        {
+            castState = CastState.REELING;
+            vectorDiff = (Vector2)transform.position - origLocalPos;
+            hookedObject = fish;
+        }
     }
 }
