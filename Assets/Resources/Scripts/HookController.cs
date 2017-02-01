@@ -13,6 +13,7 @@ public class HookController : MonoBehaviour
     private float yLimit;
     private CastState castState;
     private SpriteRenderer sprite;
+    private Rigidbody2D rBody;
     private Vector2 origPos;
     private FishermanController.CastDelegate endCb; // Callback to call when cast ends
 
@@ -21,6 +22,7 @@ public class HookController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
+        rBody = GetComponent<Rigidbody2D>();
         origPos = transform.localPosition;
         castState = CastState.READY;
     }
@@ -57,13 +59,13 @@ public class HookController : MonoBehaviour
 
     public void Move(float direction)
     {
-        float newX = transform.position.x + (direction * moveSpeed * Time.deltaTime);
-        transform.position = new Vector2(newX, transform.position.y);
+        float angle = -direction * moveSpeed * Time.deltaTime;
+        transform.Rotate(Vector3.forward, angle);
     }
 
     private void SetVars(int speedLevel, int rodLevel, int rangeLevel)
     {
-        moveSpeed = speedLevel * 0.1f;
+        moveSpeed = speedLevel * 10f;
         lineSpeed = 1 + rodLevel * 2;
         yLimit = -2 + rangeLevel * 1;
     }
