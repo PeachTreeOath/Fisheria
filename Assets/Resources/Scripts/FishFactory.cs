@@ -13,7 +13,7 @@ public class FishFactory : MonoBehaviour
     {
         loader = ResourceLoader.instance;
 
-        Invoke("SpawnBass", 0.5f);
+        Invoke("SpawnBass", 0);
     }
 
     // Update is called once per frame
@@ -34,7 +34,7 @@ public class FishFactory : MonoBehaviour
     private void SpawnBass()
     {
         CreateBass();
-      //  Invoke("SpawnBass", 0.5f);
+        Invoke("SpawnBass", 0.5f);
     }
 
     private void CreateBass()

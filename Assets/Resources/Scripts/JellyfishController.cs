@@ -1,0 +1,72 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class JellyfishController : MonoBehaviour
+{
+
+    public Vector2 topLeftBound;
+    public Vector2 bottomRightBound;
+
+    public float moveSpeed;
+    public float moveDistance;
+    public float moveDelay;
+
+    private Vector2 prevLocation;
+    private Vector2 nextLocation;
+    private bool needLocation = true;
+    private float timeElapsed;
+    private float distance;
+
+    // Use this for initialization
+    void Start()
+    {
+        prevLocation = transform.position;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (needLocation)
+        {
+            ChooseNextLocation();
+        }
+
+        timeElapsed += Time.deltaTime * moveSpeed;
+
+        transform.position = Vector2.Lerp(prevLocation, nextLocation, timeElapsed);
+        if (timeElapsed > moveDelay)
+        {
+            prevLocation = nextLocation;
+            needLocation = true;
+        }
+    }
+
+    private void ChooseNextLocation()
+    {
+        Vector2 newLoc;
+        int i = 0;
+        while (true)
+        {
+            newLoc = (UnityEngine.Random.insideUnitCircle * moveDistance) + (Vector2)transform.position;
+            if (newLoc.x > topLeftBound.x && newLoc.x < bottomRightBound.x &&
+                newLoc.y < topLeftBound.y && newLoc.y > bottomRightBound.y)
+            {
+                break;
+            }
+            i++;
+            if (i > 100)
+            {
+                Debug.LogError("Controller can't find next location");
+                break;
+            }
+        }
+
+        if (newLoc != null)
+        {
+            nextLocation = newLoc;
+            needLocation = false;
+            timeElapsed = 0;
+        }
+    }
+}
