@@ -13,8 +13,8 @@ public class HookController : MonoBehaviour
     private float yLimit;
     private CastState castState;
     private SpriteRenderer sprite;
-    private Vector2 origLocalPos;
-    private Vector2 origPos;
+    public Vector2 origPos;
+    public Vector2 origLocalPos;
     private FishermanController.CastDelegate endCb; // Callback to call when cast ends
     private FishController hookedObject;
     private Vector2 vectorDiff;
@@ -24,8 +24,8 @@ public class HookController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
-        origLocalPos = transform.localPosition;
         origPos = transform.position;
+        origLocalPos = transform.localPosition;
         castState = CastState.READY;
     }
 
@@ -43,9 +43,10 @@ public class HookController : MonoBehaviour
         }
         else if (castState == CastState.REELING)
         {
-            transform.Translate(vectorDiff * lineSpeed * Time.deltaTime);
+            Vector2 moveVector = vectorDiff * lineSpeed * Time.deltaTime;
+            transform.position += new Vector3(moveVector.x, moveVector.y, 0);
             hookedObject.transform.position = transform.position;
-            if(hookedObject.transform.position.y < origPos.y)
+            if (hookedObject.transform.position.y < origPos.y)
             {
                 ProcessFish();
                 EndCast();
@@ -58,6 +59,7 @@ public class HookController : MonoBehaviour
         sprite.enabled = true;
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
+        origPos = transform.position;
         endCb = cb;
     }
 
@@ -98,7 +100,7 @@ public class HookController : MonoBehaviour
         if (fish != null)
         {
             castState = CastState.REELING;
-            vectorDiff = (Vector2)transform.position - origLocalPos;
+            vectorDiff = origPos - (Vector2)fish.transform.position;
             hookedObject = fish;
         }
     }
