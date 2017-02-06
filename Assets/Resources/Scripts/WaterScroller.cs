@@ -21,6 +21,5 @@ public class WaterScroller : MonoBehaviour
         float x = Mathf.Repeat(Time.time * scrollSpeed, 1);
         Vector2 offset = new Vector2(x, 0);
         meshRenderer.sharedMaterial.SetTextureOffset("_MainTex", offset);
-
     }
 }

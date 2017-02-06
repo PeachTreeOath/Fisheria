@@ -15,11 +15,15 @@ public class FishermanController : MonoBehaviour
     public float speedBase;
     public float speedMult;
     private CastState castState;
+
+    // Components
     private RodController rod;
     private HookController hook;
-
     public delegate void CastDelegate();
     protected CastDelegate castCallback;
+
+    // Misc
+    private float xLimit = 8.25f;
 
     // Use this for initialization
     void Start()
@@ -36,12 +40,12 @@ public class FishermanController : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal" + playerNum) < 0)
             {
-                float newX = transform.position.x - ((speedBase + (speedLevel * speedMult)) * Time.deltaTime);
+                float newX = Mathf.Clamp(transform.position.x - ((speedBase + (speedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
             else if (Input.GetAxis("Horizontal" + playerNum) > 0)
             {
-                float newX = transform.position.x + ((speedBase + (speedLevel * speedMult)) * Time.deltaTime);
+                float newX = Mathf.Clamp(transform.position.x + ((speedBase + (speedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
 
