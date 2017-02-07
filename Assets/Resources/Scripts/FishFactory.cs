@@ -40,7 +40,7 @@ public class FishFactory : MonoBehaviour
     private void CreateBass()
     {
         int choice = Random.Range(0, 20);
-        float yValue = Random.Range(-3.5f, -2.25f);
+        float yValue = Random.Range(-4.25f, -3.25f);
         int direction = Random.Range(0, 2);
 
         BassController bass = (Instantiate<GameObject>(loader.bassObj)).GetComponent<BassController>();

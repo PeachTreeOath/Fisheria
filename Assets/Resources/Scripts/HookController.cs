@@ -90,7 +90,7 @@ public class HookController : MonoBehaviour
     {
         moveSpeed = speedLevel * 10f;
         lineSpeed = 1 + rodLevel * 2;
-        yLimit = -4 + rangeLevel * 2f;
+        yLimit = -6f + rangeLevel*2 * 3f;
     }
 
     void OnTriggerEnter2D(Collider2D col)
