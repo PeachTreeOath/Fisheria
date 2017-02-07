@@ -34,17 +34,23 @@ public class JellyfishController : MonoBehaviour
 
         timeElapsed += Time.deltaTime * moveSpeed;
 
-        transform.position = Vector2.Lerp(prevLocation, nextLocation, timeElapsed);
+        transform.position = Sinerp(prevLocation, nextLocation, timeElapsed);
         if (timeElapsed > moveDelay)
         {
             prevLocation = nextLocation;
             needLocation = true;
         }
     }
+    
+    // Sine interpolation for squid-like easing movement
+    private Vector2 Sinerp(Vector2 start, Vector2 end, float value)
+    {
+        return Vector2.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.5f));
+    }
 
     private void ChooseNextLocation()
     {
-        Vector2 newLoc;
+                Vector2 newLoc;
         int i = 0;
         while (true)
         {

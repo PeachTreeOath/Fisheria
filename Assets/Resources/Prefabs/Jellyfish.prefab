@@ -55,7 +55,7 @@ MonoBehaviour:
   topLeftBound: {x: -8.5, y: 2.3}
   bottomRightBound: {x: 8.5, y: 0.5}
   moveSpeed: 1
-  moveDistance: 2
+  moveDistance: 6
   moveDelay: 1
 --- !u!212 &212688750330386970
 SpriteRenderer:
