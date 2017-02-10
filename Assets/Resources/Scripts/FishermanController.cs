@@ -5,22 +5,25 @@ using UnityEngine;
 public class FishermanController : MonoBehaviour
 {
 
-    // Stats
-    public int speedLevel;
-    public int rangeLevel;
-    public int rodLevel;
-
     // State
     public int playerNum;
     public float speedBase;
     public float speedMult;
     private CastState castState;
+    private List<FishController> catchList;
+
+    // Stats
+    private int speedLevel;
+    private int rangeLevel;
+    private int rodLevel;
 
     // Components
     private RodController rod;
     private HookController hook;
     public delegate void CastDelegate();
     protected CastDelegate castCallback;
+    public delegate void CatchDelegate(FishController fish);
+    protected CatchDelegate catchCallback;
 
     // Misc
     private float xLimit = 8.25f;
@@ -31,6 +34,10 @@ public class FishermanController : MonoBehaviour
         rod = GetComponentInChildren<RodController>();
         hook = GetComponentInChildren<HookController>();
         castCallback = CastFinished;
+        catchCallback = CaughtFish;
+        catchList = new List<FishController>();
+
+        InitStats();
     }
 
     // Update is called once per frame
@@ -80,6 +87,14 @@ public class FishermanController : MonoBehaviour
         }
     }
 
+    private void InitStats()
+    {
+        FishermanGear gear = StatsManager.instance.playerGear[playerNum];
+        speedLevel = gear.speedLevel;
+        rangeLevel = gear.rangeLevel;
+        rodLevel = gear.rodLevel;
+    }
+
     private void AimRod()
     {
         castState = CastState.AIMING;
@@ -89,13 +104,20 @@ public class FishermanController : MonoBehaviour
     private void CastRod()
     {
         castState = CastState.CASTING;
-        hook.CastHook(castCallback, speedLevel, rangeLevel, rodLevel);
+        hook.CastHook(speedLevel, rangeLevel, rodLevel);
     }
 
-    // Callback when hook returns back to player
+    // Callback when hook returns back to player empty
     public void CastFinished()
     {
         castState = CastState.READY;
+    }
+
+    // Callback when hook returns back to player with a fish
+    public void CaughtFish(FishController fish)
+    {
+        catchList.Add(fish);
+        CastFinished();
     }
 
 }

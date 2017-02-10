@@ -15,7 +15,8 @@ public class HookController : MonoBehaviour
     private SpriteRenderer sprite;
     public Vector2 origPos;
     public Vector2 origLocalPos;
-    private FishermanController.CastDelegate endCb; // Callback to call when cast ends
+    private FishermanController.CastDelegate castCb; // Callback to call when cast misses
+    private FishermanController.CatchDelegate catchCb; // Callback to call when catch occurs
     private FishController hookedObject;
     private Vector2 vectorDiff;
 
@@ -54,18 +55,23 @@ public class HookController : MonoBehaviour
         }
     }
 
-    public void CastHook(FishermanController.CastDelegate cb, int speedLevel, int rodLevel, int rangeLevel)
+    public void InitCallbacks(FishermanController.CastDelegate castCb, FishermanController.CatchDelegate catchCb)
+    {
+        this.castCb = castCb;
+        this.catchCb = catchCb;
+    }
+
+    public void CastHook(int speedLevel, int rodLevel, int rangeLevel)
     {
         sprite.enabled = true;
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
         origPos = transform.position;
-        endCb = cb;
     }
 
     private void ProcessFish()
     {
-        //TODO: Do proper fish rewards here
+        catchCb(hookedObject);
         Destroy(hookedObject.gameObject);
     }
 
@@ -74,7 +80,7 @@ public class HookController : MonoBehaviour
         sprite.enabled = false;
         transform.localPosition = origLocalPos;
         castState = CastState.READY;
-        endCb();
+        castCb();
     }
 
     public void Move(float direction)
@@ -90,7 +96,7 @@ public class HookController : MonoBehaviour
     {
         moveSpeed = speedLevel * 10f;
         lineSpeed = 1 + rodLevel * 2;
-        yLimit = -6f + rangeLevel*2 * 3f;
+        yLimit = -6f + rangeLevel * 2 * 3f;
     }
 
     void OnTriggerEnter2D(Collider2D col)

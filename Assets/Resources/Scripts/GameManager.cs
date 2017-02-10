@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
-        Debug.Log(timeText);
+        StatsManager.instance.numRound++;
     }
 
     // Update is called once per frame
