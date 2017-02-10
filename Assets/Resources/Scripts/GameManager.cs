@@ -12,11 +12,16 @@ public class GameManager : Singleton<GameManager>
     private FishermanController[] players;
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
+        base.Awake();
+
         players = new FishermanController[4];
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
+    }
 
+    void Start()
+    {
         StatsManager.instance.numRound++;
     }
 
@@ -33,7 +38,7 @@ public class GameManager : Singleton<GameManager>
 
     public void RegisterPlayer(FishermanController player)
     {
-        players[player.playerNum] = player;
+        players[player.playerNum - 1] = player;
     }
 
     private void UpdateTime()
@@ -44,9 +49,11 @@ public class GameManager : Singleton<GameManager>
 
     private void RoundOver()
     {
-        for(int i = 0; i < StatsManager.instance.numPlayers; i++)
+        for (int i = 0; i < StatsManager.instance.numPlayers; i++)
         {
             StatsManager.instance.ProcessCatches(players[i]);
         }
+
+        SceneTransitionManager.instance.GoToScore();
     }
 }

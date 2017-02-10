@@ -101,6 +101,11 @@ public class HookController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        if(castState != CastState.CASTING)
+        {
+            return;
+        }
+
         FishController fish = col.gameObject.GetComponent<FishController>();
 
         if (fish != null)

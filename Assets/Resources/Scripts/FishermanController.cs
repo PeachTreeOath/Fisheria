@@ -31,11 +31,13 @@ public class FishermanController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        catchList = new List<FishController>();
         rod = GetComponentInChildren<RodController>();
         hook = GetComponentInChildren<HookController>();
         castCallback = CastFinished;
         catchCallback = CaughtFish;
-        catchList = new List<FishController>();
+        hook.InitCallbacks(castCallback, catchCallback);
+        GameManager.instance.RegisterPlayer(this);
 
         InitStats();
     }
@@ -89,7 +91,7 @@ public class FishermanController : MonoBehaviour
 
     private void InitStats()
     {
-        FishermanGear gear = StatsManager.instance.playerGear[playerNum];
+        FishermanGear gear = StatsManager.instance.playerGear[playerNum-1];
         speedLevel = gear.speedLevel;
         rangeLevel = gear.rangeLevel;
         rodLevel = gear.rodLevel;

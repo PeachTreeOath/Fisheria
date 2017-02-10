@@ -10,15 +10,15 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
     }
 
-    public void GoToShop()
+    public void GoToScore()
     {
         SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Shop", LoadSceneMode.Additive);
+        SceneManager.LoadScene("Score", LoadSceneMode.Additive);
     }
 
     public void GoToGame()
     {
-        SceneManager.UnloadSceneAsync("Shop");
+        SceneManager.UnloadSceneAsync("Score");
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
     }
     
