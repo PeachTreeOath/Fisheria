@@ -13,10 +13,17 @@ public class StatsManager : Singleton<StatsManager>
     public int numRound;
     public int numPlayers;
     public FishermanGear[] playerGear;
+    public FishController[] playerCatches;
 
     // Use this for initialization
     void Start() {
         playerGear = new FishermanGear[numPlayers];
 	}
+
+    public void ProcessCatches(FishermanController player)
+    {
+        int value = PointProcessor.instance.GetCatchValue(player.catchList);
+        playerGear[player.playerNum].gold += value;
+    }
 
 }

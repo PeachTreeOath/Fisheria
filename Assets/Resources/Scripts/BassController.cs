@@ -14,7 +14,7 @@ public class BassController : FishController
     }
 
     private float moveSpeed;
-    private BassType type;
+    public BassType bassType;
 
     private SpriteRenderer sprite;
 
@@ -45,7 +45,7 @@ public class BassController : FishController
 
     public void SetType(BassType newType)
     {
-        type = newType;
+        bassType = newType;
         switch (newType)
         {
             case BassType.GREEN:
@@ -63,10 +63,5 @@ public class BassController : FishController
             default:
                 break;
         }
-    }
-
-    public override void AddToInventory()
-    {
-        throw new NotImplementedException();
     }
 }

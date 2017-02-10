@@ -6,14 +6,17 @@ using UnityEngine.UI;
 public class GameManager : Singleton<GameManager>
 {
 
-    private Text timeText;
     public float roundTime;
 
+    private Text timeText;
+    private FishermanController[] players;
 
     // Use this for initialization
     void Start()
     {
+        players = new FishermanController[4];
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
+
         StatsManager.instance.numRound++;
     }
 
@@ -28,6 +31,11 @@ public class GameManager : Singleton<GameManager>
         }
     }
 
+    public void RegisterPlayer(FishermanController player)
+    {
+        players[player.playerNum] = player;
+    }
+
     private void UpdateTime()
     {
         roundTime -= Time.deltaTime;
@@ -36,6 +44,9 @@ public class GameManager : Singleton<GameManager>
 
     private void RoundOver()
     {
-
+        for(int i = 0; i < StatsManager.instance.numPlayers; i++)
+        {
+            StatsManager.instance.ProcessCatches(players[i]);
+        }
     }
 }

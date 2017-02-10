@@ -9,8 +9,8 @@ public class FishermanController : MonoBehaviour
     public int playerNum;
     public float speedBase;
     public float speedMult;
+    public List<FishController> catchList;
     private CastState castState;
-    private List<FishController> catchList;
 
     // Stats
     private int speedLevel;

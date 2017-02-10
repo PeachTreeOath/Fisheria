@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JellyfishController : MonoBehaviour
+public class JellyfishController : FishController
 {
 
     public Vector2 topLeftBound;
