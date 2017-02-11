@@ -12,7 +12,10 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         scoreText = GameObject.Find("ScoreText").GetComponent<Text>();
+    }
 
+    public void UpdateScores()
+    {
         int gold = StatsManager.instance.playerGear[0].gold;
         scoreText.text = "GOLD: " + gold;
     }

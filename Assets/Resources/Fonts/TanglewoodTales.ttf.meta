@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 261fb450673a9824c896e5440ff6ee43
+timeCreated: 1486765980
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: TanglewoodTales
+  fontNames:
+  - TanglewoodTales
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

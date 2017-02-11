@@ -37,7 +37,7 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnBass", 0.5f);
     }
 
-    private void CreateBass()
+    private BassController CreateBass()
     {
         int choice = Random.Range(0, 20);
         float yValue = Random.Range(-4.25f, -3.25f);
@@ -57,5 +57,7 @@ public class FishFactory : MonoBehaviour
         {
             bass.SetType(BassController.BassType.RED);
         }
+
+        return bass;
     }
 }
