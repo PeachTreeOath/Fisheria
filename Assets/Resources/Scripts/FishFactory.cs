@@ -47,15 +47,15 @@ public class FishFactory : MonoBehaviour
         bass.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue), direction == 1);
         if (choice < 10)
         {
-            bass.SetType(BassController.BassType.GREEN);
+            bass.type = FishType.GREEN_BASS;
         }
         else if (choice < 17)
         {
-            bass.SetType(BassController.BassType.BLUE);
+            bass.type = FishType.BLUE_BASS;
         }
         else
         {
-            bass.SetType(BassController.BassType.RED);
+            bass.type = FishType.RED_BASS;
         }
 
         return bass;

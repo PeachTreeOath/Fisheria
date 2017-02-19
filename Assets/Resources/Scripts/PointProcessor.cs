@@ -13,16 +13,16 @@ public class PointProcessor : Singleton<PointProcessor>
         {
             if (fish is BassController)
             {
-                BassController bass = (BassController)fish;
-                switch (bass.bassType)
+               
+                switch (fish.type)
                 {
-                    case BassController.BassType.GREEN:
+                    case FishType.GREEN_BASS:
                         total += 1;
                         break;
-                    case BassController.BassType.BLUE:
+                    case FishType.BLUE_BASS:
                         total += 3;
                         break;
-                    case BassController.BassType.RED:
+                    case FishType.RED_BASS:
                         total += 10;
                         break;
                 }

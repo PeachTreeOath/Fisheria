@@ -6,15 +6,7 @@ using UnityEngine;
 public class BassController : FishController
 {
 
-    public enum BassType
-    {
-        GREEN,
-        BLUE,
-        RED
-    }
-
     private float moveSpeed;
-    public BassType bassType;
 
     private SpriteRenderer sprite;
 
@@ -43,20 +35,19 @@ public class BassController : FishController
         }
     }
 
-    public void SetType(BassType newType)
+    public void SetType(FishType newType)
     {
-        bassType = newType;
         switch (newType)
         {
-            case BassType.GREEN:
+            case FishType.GREEN_BASS:
                 sprite.material = ResourceLoader.instance.greenMat;
                 moveSpeed = 1f;
                 break;
-            case BassType.BLUE:
+            case FishType.BLUE_BASS:
                 sprite.material = ResourceLoader.instance.blueMat;
                 moveSpeed = 1.5f;
                 break;
-            case BassType.RED:
+            case FishType.RED_BASS:
                 sprite.material = ResourceLoader.instance.redMat;
                 moveSpeed = 2f;
                 break;

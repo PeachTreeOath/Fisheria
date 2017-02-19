@@ -14,7 +14,7 @@ public class ScoreTester : MonoBehaviour {
     private void TestScore()
     {
         BassController bass = (Instantiate<GameObject>(loader.bassObj)).GetComponent<BassController>();
-        bass.SetType(BassController.BassType.GREEN);
+        bass.type = FishType.BLUE_BASS;
 
 
 

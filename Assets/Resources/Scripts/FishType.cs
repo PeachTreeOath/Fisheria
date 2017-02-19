@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FishController : MonoBehaviour
-{
-    public FishType type { get; set; }
+public enum FishType {
+
+	GREEN_BASS,
+    BLUE_BASS,
+    RED_BASS
 }
