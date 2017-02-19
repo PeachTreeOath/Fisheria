@@ -12,7 +12,7 @@ public class GameManager : Singleton<GameManager>
     private FishermanController[] players;
 
     // Use this for initialization
-    void Awake()
+    protected override void Awake()
     {
         base.Awake();
 
@@ -51,7 +51,7 @@ public class GameManager : Singleton<GameManager>
     {
         for (int i = 0; i < StatsManager.instance.numPlayers; i++)
         {
-            StatsManager.instance.ProcessCatches(players[i]);
+            //StatsManager.instance.ProcessCatches(players[i]);
         }
 
         SceneTransitionManager.instance.GoToScore();

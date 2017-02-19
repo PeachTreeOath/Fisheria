@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Persistent global manager for transferring stats between scenes
 public class StatsManager : Singleton<StatsManager>
 {
 
@@ -13,26 +14,19 @@ public class StatsManager : Singleton<StatsManager>
     public int numRound;
     public int numPlayers;
     public FishermanGear[] playerGear;
-    public FishController[] playerCatches;
+    public Dictionary<int, List<FishController>> playerCatches;
 
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();
 
+        playerCatches = new Dictionary<int, List<FishController>>();
         playerGear = new FishermanGear[numPlayers];
         for (int i = 0; i < numPlayers; i++)
         {
             playerGear[i] = new FishermanGear();
         }
-    }
-
-    public void ProcessCatches(FishermanController player)
-    {
-        int value = 0;
-        int count = 0;
-        value = PointProcessor.instance.GetCatchValue(player.catchList, FishType.GREEN_BASS, out count);
-        playerGear[player.playerNum - 1].gold += value;
     }
 
 }

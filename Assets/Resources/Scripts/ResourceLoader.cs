@@ -9,6 +9,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Material redMat;
 
     public GameObject bassObj;
+    public GameObject scoreBlockObj;
 
     // Use this for initialization
     protected override void Awake()
@@ -20,5 +21,6 @@ public class ResourceLoader : Singleton<ResourceLoader>
         redMat = Resources.Load<Material>("Materials/RedMat");
 
         bassObj = Resources.Load<GameObject>("Prefabs/Bass");
+        scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
     }
 }

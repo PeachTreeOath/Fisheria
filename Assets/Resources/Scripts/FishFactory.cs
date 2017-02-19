@@ -16,12 +16,6 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnBass", 0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     private int GetDirectionMultiplier(int direction)
     {
         if (direction == 0)

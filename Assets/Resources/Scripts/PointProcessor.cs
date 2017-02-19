@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Calculates catch list values
 public class PointProcessor : Singleton<PointProcessor>
 {
 
