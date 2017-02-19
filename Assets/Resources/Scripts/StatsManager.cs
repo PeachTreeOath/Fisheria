@@ -29,8 +29,10 @@ public class StatsManager : Singleton<StatsManager>
 
     public void ProcessCatches(FishermanController player)
     {
-        int value = PointProcessor.instance.GetCatchValue(player.catchList);
-        playerGear[player.playerNum-1].gold += value;
+        int value = 0;
+        int count = 0;
+        value = PointProcessor.instance.GetCatchValue(player.catchList, FishType.GREEN_BASS, out count);
+        playerGear[player.playerNum - 1].gold += value;
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class ScoreBlock : MonoBehaviour
 {
 
@@ -17,11 +18,14 @@ public class ScoreBlock : MonoBehaviour
         nameText = transform.Find("Name").GetComponent<Text>();
         countText = transform.Find("Count").GetComponent<Text>();
         valueText = transform.Find("Value").GetComponent<Text>();
-        scoreSprite= transform.Find("ScoreIcon").GetComponent<SpriteRenderer>();
+        scoreSprite = transform.Find("ScoreIcon").GetComponent<SpriteRenderer>();
     }
 
-    public void Init(FishType type)
+    public void PopulateBlock(FishType type, int count, int value)
     {
-
+        // TODO: Swap out icon
+        nameText.text = type.GetNameString();
+        countText.text = "x" + count;
+        valueText.text = "$" + value;
     }
 }
