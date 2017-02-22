@@ -8,12 +8,10 @@ public class BassController : FishController
 
     private float moveSpeed;
 
-    private SpriteRenderer sprite;
-
     // Use this for initialization
-    void Awake()
+    protected override void Awake()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        base.Awake();
     }
 
     // Update is called once per frame

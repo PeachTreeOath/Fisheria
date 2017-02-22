@@ -1787,6 +1787,8 @@ MonoBehaviour:
   blueMat: {fileID: 0}
   redMat: {fileID: 0}
   bassObj: {fileID: 0}
+  troutObj: {fileID: 0}
+  scoreBlockObj: {fileID: 0}
 --- !u!114 &2081982827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1798,7 +1800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fba8009b9edd64bbb5df5826db3599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 10
+  roundTime: 60
 --- !u!4 &2081982828
 Transform:
   m_ObjectHideFlags: 0

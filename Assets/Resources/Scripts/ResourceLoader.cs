@@ -9,6 +9,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Material redMat;
 
     public GameObject bassObj;
+    public GameObject troutObj;
+
     public GameObject scoreBlockObj;
 
     // Use this for initialization
@@ -21,6 +23,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
         redMat = Resources.Load<Material>("Materials/RedMat");
 
         bassObj = Resources.Load<GameObject>("Prefabs/Bass");
+        troutObj = Resources.Load<GameObject>("Prefabs/Trout");
+
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
     }
 }

@@ -7,7 +7,8 @@ public enum FishType
 
     GREEN_BASS,
     BLUE_BASS,
-    RED_BASS
+    RED_BASS,
+    TROUT
 }
 
 public static class FishTypeExtensions
@@ -22,6 +23,8 @@ public static class FishTypeExtensions
                 return "Blue Bass";
             case FishType.RED_BASS:
                 return "Red Bass";
+            case FishType.TROUT:
+                return "Rainbow Trout";
         }
 
         return "FAIL FISH";

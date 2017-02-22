@@ -27,7 +27,7 @@ public class FishFactory : MonoBehaviour
 
     private void SpawnBass()
     {
-        CreateBass();
+        CreateTrout();
         Invoke("SpawnBass", 0.5f);
     }
 
@@ -53,5 +53,19 @@ public class FishFactory : MonoBehaviour
         }
 
         return bass;
+    }
+
+    private TroutController CreateTrout()
+    {
+        float xValue = Random.Range(0, 4f);
+        float yValue = -4.1f;
+        int direction = Random.Range(0, 2);
+        int dirMult = GetDirectionMultiplier(direction);
+
+        TroutController trout = (Instantiate<GameObject>(loader.troutObj)).GetComponent<TroutController>();
+        trout.Spawn(new Vector2(xLimit * dirMult + xValue * dirMult, yValue), direction == 1);
+        trout.type = FishType.TROUT;
+
+        return trout;
     }
 }
