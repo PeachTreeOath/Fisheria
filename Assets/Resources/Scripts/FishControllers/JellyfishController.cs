@@ -16,7 +16,6 @@ public class JellyfishController : FishController
     private Vector2 nextLocation;
     private bool needLocation = true;
     private float elapsedTime;
-    private float distance;
 
     // Use this for initialization
     void Start()
@@ -41,7 +40,7 @@ public class JellyfishController : FishController
             needLocation = true;
         }
     }
-    
+
     // Sine interpolation for squid-like easing movement
     private Vector2 Sinerp(Vector2 start, Vector2 end, float value)
     {
@@ -50,7 +49,7 @@ public class JellyfishController : FishController
 
     private void ChooseNextLocation()
     {
-                Vector2 newLoc;
+        Vector2 newLoc;
         int i = 0;
         while (true)
         {
