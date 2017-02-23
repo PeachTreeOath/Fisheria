@@ -11,8 +11,8 @@ public class HookController : MonoBehaviour
     private float moveSpeed;
     private float lineSpeed;
     private float yLimit;
-    private CastState castState;
     private SpriteRenderer sprite;
+    public CastState castState;
     public Vector2 origPos;
     public Vector2 origLocalPos;
     private FishermanController.CastDelegate castCb; // Callback to call when cast misses
@@ -99,20 +99,10 @@ public class HookController : MonoBehaviour
         yLimit = -6f + rangeLevel * 2 * 3f;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    public void CaughtFish(FishController fish)
     {
-        if(castState != CastState.CASTING)
-        {
-            return;
-        }
-
-        FishController fish = col.gameObject.GetComponent<FishController>();
-
-        if (fish != null)
-        {
-            castState = CastState.REELING;
-            vectorDiff = origPos - (Vector2)fish.transform.position;
-            hookedObject = fish;
-        }
+        castState = CastState.REELING;
+        vectorDiff = origPos - (Vector2)fish.transform.position;
+        hookedObject = fish;
     }
 }

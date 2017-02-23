@@ -13,4 +13,17 @@ public class FishController : MonoBehaviour
     {
         sprite = GetComponent<SpriteRenderer>();
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D col)
+    {
+        HookController hook = col.gameObject.GetComponent<HookController>();
+
+        if (hook != null)
+        {
+            if (hook.castState == CastState.CASTING)
+            {
+                hook.CaughtFish(this);
+            }
+        }
+    }
 }

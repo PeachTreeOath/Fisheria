@@ -15,7 +15,7 @@ public class JellyfishController : FishController
     private Vector2 prevLocation;
     private Vector2 nextLocation;
     private bool needLocation = true;
-    private float timeElapsed;
+    private float elapsedTime;
     private float distance;
 
     // Use this for initialization
@@ -32,10 +32,10 @@ public class JellyfishController : FishController
             ChooseNextLocation();
         }
 
-        timeElapsed += Time.deltaTime * moveSpeed;
+        elapsedTime += Time.deltaTime * moveSpeed;
 
-        transform.position = Sinerp(prevLocation, nextLocation, timeElapsed);
-        if (timeElapsed > moveDelay)
+        transform.position = Sinerp(prevLocation, nextLocation, elapsedTime);
+        if (elapsedTime > moveDelay)
         {
             prevLocation = nextLocation;
             needLocation = true;
@@ -72,7 +72,7 @@ public class JellyfishController : FishController
         {
             nextLocation = newLoc;
             needLocation = false;
-            timeElapsed = 0;
+            elapsedTime = 0;
         }
     }
 }

@@ -22,8 +22,8 @@ public class ResourceLoader : Singleton<ResourceLoader>
         blueMat = Resources.Load<Material>("Materials/BlueMat");
         redMat = Resources.Load<Material>("Materials/RedMat");
 
-        bassObj = Resources.Load<GameObject>("Prefabs/Bass");
-        troutObj = Resources.Load<GameObject>("Prefabs/Trout");
+        bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
+        troutObj = Resources.Load<GameObject>("Prefabs/Fish/Trout");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
     }
