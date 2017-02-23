@@ -7,13 +7,7 @@ public class BassController : FishController
 {
 
     private float moveSpeed;
-
-    // Use this for initialization
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
+    
     // Update is called once per frame
     void Update()
     {

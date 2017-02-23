@@ -9,12 +9,6 @@ public class TroutController : FishController
     private float moveSpeed = 2.5f;
     private float elapsedTime;
 
-    // Use this for initialization
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
     // Update is called once per frame
     void Update()
     {
