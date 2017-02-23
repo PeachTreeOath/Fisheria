@@ -8,7 +8,13 @@ public enum FishType
     GREEN_BASS,
     BLUE_BASS,
     RED_BASS,
-    TROUT
+    TROUT,
+    OYSTER,
+    TIGER_SHARK,
+    GREAT_WHITE_SHARK,
+    SALMON,
+    PUFFER
+
 }
 
 public static class FishTypeExtensions
@@ -24,7 +30,17 @@ public static class FishTypeExtensions
             case FishType.RED_BASS:
                 return "Red Bass";
             case FishType.TROUT:
-                return "Rainbow Trout";
+                return "R.Trout";
+            case FishType.OYSTER:
+                return "Pearl";
+            case FishType.TIGER_SHARK:
+                return "Tiger Shark";
+            case FishType.GREAT_WHITE_SHARK:
+                return "G.White Shark";
+            case FishType.SALMON:
+                return "Salmon";
+            case FishType.PUFFER:
+                return "Puffer";
         }
 
         return "FAIL FISH";
