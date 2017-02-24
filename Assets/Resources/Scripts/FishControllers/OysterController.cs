@@ -6,9 +6,6 @@ using UnityEngine;
 public class OysterController : FishController
 {
 
-    public Vector2 topLeftBound;
-    public Vector2 bottomRightBound;
-
     public Sprite openSprite;
     public Sprite closedSprite;
 
@@ -51,17 +48,9 @@ public class OysterController : FishController
         }
     }
 
-    public void Spawn(Vector2 position, bool spawnOnLeft)
+    public void Spawn(Vector2 position)
     {
         transform.position = position;
-        if (spawnOnLeft)
-        {
-            transform.Rotate(Vector3.forward, 75);
-        }
-        else
-        {
-            transform.Rotate(Vector3.forward, -105);
-        }
     }
 
     private float GetNextOpenTime()

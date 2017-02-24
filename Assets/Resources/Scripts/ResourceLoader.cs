@@ -10,6 +10,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
 
     public GameObject bassObj;
     public GameObject troutObj;
+    public GameObject oysterObj;
 
     public GameObject scoreBlockObj;
 
@@ -24,6 +25,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
 
         bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
         troutObj = Resources.Load<GameObject>("Prefabs/Fish/Trout");
+        oysterObj = Resources.Load<GameObject>("Prefabs/Fish/Oyster");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
     }

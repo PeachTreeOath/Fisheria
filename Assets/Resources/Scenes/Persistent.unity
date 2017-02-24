@@ -218,7 +218,7 @@ MonoBehaviour:
   p3JoyMap: 
   p4JoyMap: 
   numRound: 0
-  numPlayers: 1
+  numPlayers: 4
 --- !u!114 &326200225
 MonoBehaviour:
   m_ObjectHideFlags: 0

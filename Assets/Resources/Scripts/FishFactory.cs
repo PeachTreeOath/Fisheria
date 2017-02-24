@@ -14,6 +14,8 @@ public class FishFactory : MonoBehaviour
         loader = ResourceLoader.instance;
 
         Invoke("SpawnBass", 0);
+        Invoke("SpawnTrout", 3);
+        Invoke("SpawnOyster", 0);
     }
 
     private int GetDirectionMultiplier(int direction)
@@ -27,8 +29,20 @@ public class FishFactory : MonoBehaviour
 
     private void SpawnBass()
     {
+        CreateBass();
+        Invoke("SpawnBass", 1f);
+    }
+
+    private void SpawnTrout()
+    {
         CreateTrout();
-        Invoke("SpawnBass", 0.5f);
+        Invoke("SpawnTrout", UnityEngine.Random.Range(0, 10));
+    }
+
+    private void SpawnOyster()
+    {
+        CreateOyster();
+        Invoke("SpawnOyster", UnityEngine.Random.Range(10, 20));
     }
 
     private BassController CreateBass()
@@ -41,14 +55,17 @@ public class FishFactory : MonoBehaviour
         bass.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue), direction == 1);
         if (choice < 10)
         {
+            bass.SetType(FishType.GREEN_BASS);
             bass.type = FishType.GREEN_BASS;
         }
         else if (choice < 17)
         {
+            bass.SetType(FishType.BLUE_BASS);
             bass.type = FishType.BLUE_BASS;
         }
         else
         {
+            bass.SetType(FishType.RED_BASS);
             bass.type = FishType.RED_BASS;
         }
 
@@ -67,5 +84,17 @@ public class FishFactory : MonoBehaviour
         trout.type = FishType.TROUT;
 
         return trout;
+    }
+
+    private OysterController CreateOyster()
+    {
+        float xValue = Random.Range(-6, 6f);
+        float yValue = Random.Range(-4.5f, -3.33f);
+
+        OysterController oyster = (Instantiate<GameObject>(loader.oysterObj)).GetComponent<OysterController>();
+        oyster.Spawn(new Vector2(xValue, yValue));
+        oyster.type = FishType.OYSTER;
+
+        return oyster;
     }
 }
