@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
 
-    private Text scoreText;
     private bool isRevealingScores = true; //TODO: Dont set to true
     private float revealRate = 0.5f;
     private float revealElapsedTime;

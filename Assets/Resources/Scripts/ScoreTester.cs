@@ -8,7 +8,7 @@ public class ScoreTester : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        TestScore();
+       // TestScore();
     }
 
     private void TestScore()

@@ -246,6 +246,7 @@ MonoBehaviour:
   redMat: {fileID: 0}
   bassObj: {fileID: 0}
   troutObj: {fileID: 0}
+  oysterObj: {fileID: 0}
   scoreBlockObj: {fileID: 0}
 --- !u!1 &1256911030
 GameObject:
@@ -256,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1256911031}
   - component: {fileID: 1256911032}
+  - component: {fileID: 1256911033}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -287,3 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2266115e7d4b2c4fbd5c1d912537f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &1256911033
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1256911030}
+  m_Enabled: 1

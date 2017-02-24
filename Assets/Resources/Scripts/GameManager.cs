@@ -23,6 +23,7 @@ public class GameManager : Singleton<GameManager>
     void Start()
     {
         StatsManager.instance.numRound++;
+        AudioManager.instance.PlayMusic("daytime", 1);
     }
 
     // Update is called once per frame
