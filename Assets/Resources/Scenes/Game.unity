@@ -1979,7 +1979,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2081982828}
   - component: {fileID: 2081982827}
-  - component: {fileID: 2081982826}
   - component: {fileID: 2081982825}
   - component: {fileID: 2081982829}
   m_Layer: 0
@@ -2000,24 +1999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a7d869f19ac8cd41bae84cf66268c87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2081982826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2081982824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9fcbb47b778a14eb9bc740302fd6b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greenMat: {fileID: 0}
-  blueMat: {fileID: 0}
-  redMat: {fileID: 0}
-  bassObj: {fileID: 0}
-  troutObj: {fileID: 0}
-  oysterObj: {fileID: 0}
-  scoreBlockObj: {fileID: 0}
 --- !u!114 &2081982827
 MonoBehaviour:
   m_ObjectHideFlags: 0
