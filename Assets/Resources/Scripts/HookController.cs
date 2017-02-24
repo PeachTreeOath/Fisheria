@@ -96,7 +96,7 @@ public class HookController : MonoBehaviour
     {
         moveSpeed = speedLevel * 10f;
         lineSpeed = 1 + rodLevel * 2;
-        yLimit = -6f + rangeLevel * 2 * 3f;
+        yLimit = -6f + rangeLevel * 3f;
     }
 
     public void CaughtFish(FishController fish)

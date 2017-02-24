@@ -6,7 +6,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
 {
     public void StartGame()
     {
-        SceneManager.UnloadSceneAsync("MainMenu");
+        SceneManager.UnloadSceneAsync("Title");
         SceneManager.LoadScene("Game", LoadSceneMode.Additive);
     }
 
