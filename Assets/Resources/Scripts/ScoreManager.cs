@@ -27,6 +27,8 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        PointProcessor.instance.CalculateGroupPoints(StatsManager.instance.playerCatches);
+
         for (int i = 1; i < StatsManager.instance.numPlayers + 1; i++)
         {
             ProcessCatches(StatsManager.instance.playerCatches[i], i);
@@ -100,7 +102,7 @@ public class ScoreManager : MonoBehaviour
         block3.GetComponent<ScoreBlock>().PopulateBlock(FishType.RED_BASS, count, value);
         yPosition -= yPositionChange;
 
-        value = PointProcessor.instance.GetCatchValue(fishController, FishType.TROUT, out count);
+        value = PointProcessor.instance.GetTroutValue(playerNum, out count);
         GameObject block4 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block4.transform.position = new Vector2(xPosition, yPosition);
         block4.GetComponent<ScoreBlock>().PopulateBlock(FishType.TROUT, count, value);
