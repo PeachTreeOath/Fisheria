@@ -50,9 +50,9 @@ public class GameManager : Singleton<GameManager>
 
     private void RoundOver()
     {
-        for (int i = 0; i < StatsManager.instance.numPlayers; i++)
+        foreach(FishermanController player in players)
         {
-            //StatsManager.instance.ProcessCatches(players[i]);
+            StatsManager.instance.playerCatches[player.playerNum] = player.catchList;
         }
 
         SceneTransitionManager.instance.GoToScore();

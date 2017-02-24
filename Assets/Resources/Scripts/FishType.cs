@@ -30,7 +30,7 @@ public static class FishTypeExtensions
             case FishType.RED_BASS:
                 return "Red Bass";
             case FishType.TROUT:
-                return "R.Trout";
+                return "Rainbow Trout";
             case FishType.OYSTER:
                 return "Pearl";
             case FishType.TIGER_SHARK:

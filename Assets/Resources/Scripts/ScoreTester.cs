@@ -29,7 +29,7 @@ public class ScoreTester : MonoBehaviour
         catchList.Add(rBass);
 
         StatsManager.instance.playerCatches.Add(1, catchList);
-        GetComponent<ScoreManager>().ProcessCatches(catchList);
+        GetComponent<ScoreManager>().ProcessCatches(catchList, -6);
         GetComponent<ScoreManager>().UpdateScores();
     }
 }

@@ -11,31 +11,39 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : Singleton<SceneTransitionManager>
 {
     private Scene tempScene;
+    private string tempSceneName = "TempScene";
 
     public void StartGame()
     {
         string nextSceneName = "Game";
-
         SceneManager.UnloadSceneAsync("Title");
 
-        tempScene = SceneManager.CreateScene("TempScene");
+        tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
-
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-
         StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
     }
 
     public void GoToScore()
     {
+        string nextSceneName = "Score";
         SceneManager.UnloadSceneAsync("Game");
-        SceneManager.LoadScene("Score", LoadSceneMode.Additive);
+
+        tempScene = SceneManager.CreateScene(tempSceneName);
+        SceneManager.SetActiveScene(tempScene);
+        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
     }
 
     public void GoToGame()
     {
+        string nextSceneName = "Game";
         SceneManager.UnloadSceneAsync("Score");
-        SceneManager.LoadScene("Game", LoadSceneMode.Additive);
+
+        tempScene = SceneManager.CreateScene(tempSceneName);
+        SceneManager.SetActiveScene(tempScene);
+        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
     }
 
     public IEnumerator SetActive(Scene scene)
