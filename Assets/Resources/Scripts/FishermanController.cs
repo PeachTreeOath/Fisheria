@@ -16,6 +16,7 @@ public class FishermanController : MonoBehaviour
     private int speedLevel;
     private int rangeLevel;
     private int rodLevel;
+    private int resetLevel;
 
     // Components
     private RodController rod;
@@ -27,6 +28,8 @@ public class FishermanController : MonoBehaviour
 
     // Misc
     private float xLimit = 8.25f;
+    private float resetSpeed;
+    private float resetElapsedTime;
 
     // Use this for initialization
     void Start()
@@ -87,6 +90,16 @@ public class FishermanController : MonoBehaviour
                 hook.Move(hValue);
             }
         }
+        else if (castState == CastState.RESETTING)
+        {
+            resetElapsedTime += Time.deltaTime;
+            if (resetElapsedTime > resetSpeed)
+            {
+                castState = CastState.READY;
+                // TODO Temp way to show ready
+                GetComponent<SpriteRenderer>().color = Color.white;
+            }
+        }
     }
 
     private void InitStats()
@@ -95,6 +108,9 @@ public class FishermanController : MonoBehaviour
         speedLevel = gear.speedLevel;
         rangeLevel = gear.rangeLevel;
         rodLevel = gear.rodLevel;
+        resetLevel = gear.resetLevel;
+
+        resetSpeed = 2 - resetLevel * 0.5f;
     }
 
     private void AimRod()
@@ -112,7 +128,10 @@ public class FishermanController : MonoBehaviour
     // Callback when hook returns back to player empty
     public void CastFinished()
     {
-        castState = CastState.READY;
+        castState = CastState.RESETTING;
+        resetElapsedTime = 0;
+        //TODO Temp indicator of readying cast
+        GetComponent<SpriteRenderer>().color = Color.black;
     }
 
     // Callback when hook returns back to player with a fish

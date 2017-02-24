@@ -7,5 +7,6 @@ public enum CastState {
     READY,
     AIMING,
     CASTING,
-    REELING
+    REELING,
+    RESETTING
 }

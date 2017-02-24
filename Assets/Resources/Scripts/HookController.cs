@@ -20,14 +20,14 @@ public class HookController : MonoBehaviour
     private FishermanController.CatchDelegate catchCb; // Callback to call when catch occurs
     private FishController hookedObject;
     private Vector2 vectorDiff;
-    private BoxCollider2D collider;
+    private BoxCollider2D boxCollider;
 
     // Use this for initialization
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
-        collider = GetComponent<BoxCollider2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
         origPos = transform.position;
         origLocalPos = transform.localPosition;
         castState = CastState.READY;
@@ -45,9 +45,9 @@ public class HookController : MonoBehaviour
                 EndCast();
             }
 
-            if (transform.position.x < -xLimit || transform.position.x > xLimit  )
+            if (transform.position.x < -xLimit || transform.position.x > xLimit)
             {
-                collider.enabled = false;
+                boxCollider.enabled = false;
             }
         }
         else if (castState == CastState.REELING)
@@ -71,7 +71,7 @@ public class HookController : MonoBehaviour
 
     public void CastHook(int speedLevel, int rodLevel, int rangeLevel)
     {
-        collider.enabled = true;
+        boxCollider.enabled = true;
         sprite.enabled = true;
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
