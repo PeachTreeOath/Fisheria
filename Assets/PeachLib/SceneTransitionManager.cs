@@ -13,6 +13,12 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
     private Scene tempScene;
     private string tempSceneName = "TempScene";
 
+    public void ShowTitleScreen()
+    {
+        string nextSceneName = "Title";
+        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
+    }
+
     public void StartGame()
     {
         string nextSceneName = "Game";
