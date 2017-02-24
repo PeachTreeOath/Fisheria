@@ -45,6 +45,12 @@ public class PointProcessor : Singleton<PointProcessor>
                 return GetBlueBassValue(catchList, out count);
             case FishType.RED_BASS:
                 return GetRedBassValue(catchList, out count);
+            case FishType.TROUT:
+                count = 1;
+                return 0;
+            case FishType.OYSTER:
+                count = 1;
+                return 0;
         }
 
         count = 0;

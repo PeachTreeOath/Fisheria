@@ -23,6 +23,14 @@ public class ScoreManager : MonoBehaviour
         {
             blocks.Add(new Queue<GameObject>());
         }
+    }
+
+    void Start()
+    {
+        for (int i = 1; i < StatsManager.instance.numPlayers + 1; i++)
+        {
+            ProcessCatches(StatsManager.instance.playerCatches[i], i);
+        }
 
         foreach (Queue<GameObject> queue in blocks)
         {
@@ -33,17 +41,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        for (int i = 1; i < StatsManager.instance.numPlayers + 1; i++)
-        {
-            ProcessCatches(StatsManager.instance.playerCatches[i], i);
-        }
-    }
-
     void Update()
     {
-        if (blocks.Count == 0)
+        if (blocks[0].Count == 0)
         {
             isRevealingScores = false;
         }
@@ -60,6 +60,16 @@ public class ScoreManager : MonoBehaviour
                         nextBlock.SetActive(true);
                     }
                     revealElapsedTime = 0;
+                }
+            }
+        }
+        else
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                if (Input.GetButtonDown("FireA" + i) || Input.GetButtonDown("FireB" + i))
+                {
+                    SceneTransitionManager.instance.GoToGame();
                 }
             }
         }

@@ -28,5 +28,4 @@ public class StatsManager : Singleton<StatsManager>
             playerGear[i] = new FishermanGear();
         }
     }
-
 }
