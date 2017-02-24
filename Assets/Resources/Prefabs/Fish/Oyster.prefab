@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4052324364539178}
   - component: {fileID: 212294852315063124}
-  - component: {fileID: 61003121829266948}
   - component: {fileID: 50337454249222936}
   - component: {fileID: 114782227711070072}
+  - component: {fileID: 58848009312429946}
   m_Layer: 0
   m_Name: Oyster
   m_TagString: Untagged
@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1676499120260508}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -2.24, y: -3.66, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &61003121829266948
-BoxCollider2D:
+--- !u!58 &58848009312429946
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -74,9 +74,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.03, y: -0.05}
   serializedVersion: 2
-  m_Size: {x: 0.325, y: 0.525}
+  m_Radius: 0.09
 --- !u!114 &114782227711070072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,8 +88,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed59a548667ce4994c587baab3acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSprite: {fileID: 21300000, guid: cfddd81c1712bf14d8309670d6f51831, type: 3}
-  closedSprite: {fileID: 21300000, guid: e5db95825a9b6f345aae71384fd66d60, type: 3}
+  topLeftBound: {x: 0, y: 0}
+  bottomRightBound: {x: 0, y: 0}
+  openSprite: {fileID: 21300000, guid: 2e1a2745c488eeb48ba375357c2f300f, type: 3}
+  closedSprite: {fileID: 21300000, guid: 43f1427a38a1b484e8bde455e8444a7b, type: 3}
+  minOpenTime: 15
+  maxOpenTime: 30
 --- !u!212 &212294852315063124
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,7 +125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78635f3e30870b44999d57a1e9e0e4a5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2e1a2745c488eeb48ba375357c2f300f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
