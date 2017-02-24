@@ -16,9 +16,9 @@ public class OysterController : FishController
     private float elapsedTime;
     private bool isOpen;
 
-    // Keep track of all players already in oyster so that when it opens, you can
-    // fairly choose closest player to win
-    private List<HookController> hookList;
+    // When oyster is open, swap shell collider with pearl collider
+    private CapsuleCollider2D closedCollider;
+    private CircleCollider2D openCollider;
 
     // Use this for initialization
     protected override void Awake()
@@ -28,8 +28,9 @@ public class OysterController : FishController
 
     void Start()
     {
-        hookList = new List<HookController>();
-        nextOpen = GetNextOpenTime();
+        closedCollider = GetComponent<CapsuleCollider2D>();
+        openCollider = GetComponent<CircleCollider2D>();
+        nextOpen = UnityEngine.Random.Range(minOpenTime, maxOpenTime);
         sprite.sprite = closedSprite;
     }
 
@@ -43,7 +44,8 @@ public class OysterController : FishController
             {
                 isOpen = true;
                 sprite.sprite = openSprite;
-                CheckForHookCatch();
+                closedCollider.enabled = false;
+                openCollider.enabled = true;
             }
         }
     }
@@ -53,62 +55,22 @@ public class OysterController : FishController
         transform.position = position;
     }
 
-    private float GetNextOpenTime()
-    {
-        return UnityEngine.Random.Range(minOpenTime, maxOpenTime);
-    }
-
     protected override void OnTriggerEnter2D(Collider2D col)
     {
-        HookController hook = col.GetComponent<HookController>();
-        if (hook != null)
+        if(isOpen)
         {
-            hookList.Add(hook);
-            CheckForHookCatch();
+            base.OnTriggerEnter2D(col);
         }
-    }
-
-    void OnTriggerExit2D(Collider2D col)
-    {
-        HookController hook = col.GetComponent<HookController>();
-        if (hook != null)
+        else
         {
-            hookList.Remove(hook);
-        }
-    }
+            HookController hook = col.gameObject.GetComponent<HookController>();
 
-    // Check for closest hook once oyster opens (might be multiple upon opening)
-    private void CheckForHookCatch()
-    {
-        if (isOpen)
-        {
-            // Case for multiple hooks
-            if (hookList.Count > 1)
+            if (hook != null)
             {
-                HookController closestHook = hookList[0];
-                float closestDist = Vector2.Distance(transform.position, closestHook.transform.position);
-                foreach (HookController hook in hookList)
+                if (hook.castState == CastState.CASTING)
                 {
-                    float dist = Vector2.Distance(transform.position, hook.transform.position);
-                    if (dist < closestDist)
-                    {
-                        closestHook = hook;
-                        closestDist = dist;
-                    }
+                    hook.EndCast();
                 }
-
-                closestHook.CaughtFish(this);
-
-                nextOpen = GetNextOpenTime();
-                elapsedTime = 0;
-            }
-            // Case for single hook
-            else if(hookList.Count == 1)
-            {
-                hookList[0].CaughtFish(this);
-
-                nextOpen = GetNextOpenTime();
-                elapsedTime = 0;
             }
         }
     }

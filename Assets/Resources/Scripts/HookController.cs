@@ -11,6 +11,7 @@ public class HookController : MonoBehaviour
     private float moveSpeed;
     private float lineSpeed;
     private float yLimit;
+    private float xLimit = 8.5f;
     private SpriteRenderer sprite;
     public CastState castState;
     public Vector2 origPos;
@@ -19,12 +20,14 @@ public class HookController : MonoBehaviour
     private FishermanController.CatchDelegate catchCb; // Callback to call when catch occurs
     private FishController hookedObject;
     private Vector2 vectorDiff;
+    private BoxCollider2D collider;
 
     // Use this for initialization
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         sprite.enabled = false;
+        collider = GetComponent<BoxCollider2D>();
         origPos = transform.position;
         origLocalPos = transform.localPosition;
         castState = CastState.READY;
@@ -40,6 +43,11 @@ public class HookController : MonoBehaviour
             if (transform.position.y > yLimit)
             {
                 EndCast();
+            }
+
+            if (transform.position.x < -xLimit || transform.position.x > xLimit  )
+            {
+                collider.enabled = false;
             }
         }
         else if (castState == CastState.REELING)
@@ -63,6 +71,7 @@ public class HookController : MonoBehaviour
 
     public void CastHook(int speedLevel, int rodLevel, int rangeLevel)
     {
+        collider.enabled = true;
         sprite.enabled = true;
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
@@ -75,7 +84,7 @@ public class HookController : MonoBehaviour
         Destroy(hookedObject.gameObject);
     }
 
-    private void EndCast()
+    public void EndCast()
     {
         sprite.enabled = false;
         transform.localPosition = origLocalPos;
