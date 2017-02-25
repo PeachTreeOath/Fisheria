@@ -79,6 +79,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ProcessCatches(List<FishController> fishController, int playerNum)
     {
+        int totalValue = 0;
         int value = 0;
         int count = 0;
         float yPosition = startingYPosition;
@@ -89,29 +90,42 @@ public class ScoreManager : MonoBehaviour
         block1.transform.position = new Vector2(xPosition, yPosition);
         block1.GetComponent<ScoreBlock>().PopulateBlock(FishType.GREEN_BASS, count, value);
         yPosition -= yPositionChange;
+        totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.BLUE_BASS, out count);
         GameObject block2 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block2.transform.position = new Vector2(xPosition, yPosition);
         block2.GetComponent<ScoreBlock>().PopulateBlock(FishType.BLUE_BASS, count, value);
         yPosition -= yPositionChange;
+        totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.RED_BASS, out count);
         GameObject block3 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block3.transform.position = new Vector2(xPosition, yPosition);
         block3.GetComponent<ScoreBlock>().PopulateBlock(FishType.RED_BASS, count, value);
         yPosition -= yPositionChange;
+        totalValue += value;
 
         value = PointProcessor.instance.GetTroutValue(playerNum, out count);
         GameObject block4 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block4.transform.position = new Vector2(xPosition, yPosition);
         block4.GetComponent<ScoreBlock>().PopulateBlock(FishType.TROUT, count, value);
         yPosition -= yPositionChange;
+        totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.OYSTER, out count);
         GameObject block5 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block5.transform.position = new Vector2(xPosition, yPosition);
         block5.GetComponent<ScoreBlock>().PopulateBlock(FishType.OYSTER, count, value);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
+        GameObject block6 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
+        block6.transform.position = new Vector2(xPosition, yPosition);
+        ScoreBlock totalBlock = block6.GetComponent<ScoreBlock>();
+        totalBlock.nameText.text = "Total";
+        totalBlock.countText.text = " ";
+        totalBlock.valueText.text = "$" + totalValue;
         yPosition -= yPositionChange;
 
         blocks[playerNum - 1].Enqueue(block1);
@@ -119,6 +133,7 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block3);
         blocks[playerNum - 1].Enqueue(block4);
         blocks[playerNum - 1].Enqueue(block5);
+        blocks[playerNum - 1].Enqueue(block6);
 
         //playerGear[player.playerNum - 1].gold += value;
     }

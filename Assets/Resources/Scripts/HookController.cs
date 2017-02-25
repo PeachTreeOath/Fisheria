@@ -103,8 +103,8 @@ public class HookController : MonoBehaviour
 
     private void SetVars(int speedLevel, int rodLevel, int rangeLevel)
     {
-        moveSpeed = speedLevel * 10f;
-        lineSpeed = 1 + rodLevel * 2;
+        moveSpeed = speedLevel * 8;
+        lineSpeed = 0 + rodLevel * 1;
         yLimit = -6f + rangeLevel * 3f;
     }
 
