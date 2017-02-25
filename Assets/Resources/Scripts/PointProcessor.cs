@@ -22,6 +22,10 @@ public class PointProcessor : Singleton<PointProcessor>
 
         troutValues = new Dictionary<int, int>();
         troutCounts = new Dictionary<int, int>();
+        for (int i = 1; i < 5; i++)
+        {
+            troutValues[i] = 0;
+        }
     }
 
     public void CalculateGroupPoints(Dictionary<int, List<FishController>> playerCatches)
@@ -50,6 +54,10 @@ public class PointProcessor : Singleton<PointProcessor>
             {
                 nextWinningCount = winningCount;
                 winningCount = count;
+            }
+            else if (count > nextWinningCount)
+            {
+                nextWinningCount = count;
             }
         }
 
@@ -133,10 +141,10 @@ public class PointProcessor : Singleton<PointProcessor>
             case FishType.RED_BASS:
                 return GetRedBassValue(catchList, out count);
             case FishType.TROUT:
-                count = 1;
+                count = 0;
                 return 0;
             case FishType.OYSTER:
-                count = 1;
+                GetOysterCount(catchList, out count);
                 return 0;
         }
 
@@ -170,6 +178,25 @@ public class PointProcessor : Singleton<PointProcessor>
             if (fish.type == type)
             {
                 total += value;
+                totalCount++;
+            }
+        }
+
+        count = totalCount;
+        return total;
+    }
+
+    // Used for calculating simple fish count by value
+    private int GetOysterCount(List<FishController> catchList, out int count)
+    {
+        int total = 0;
+        int totalCount = 0;
+
+        foreach (FishController fish in catchList)
+        {
+            if (fish.type == FishType.OYSTER)
+            {
+                total += 30;
                 totalCount++;
             }
         }
