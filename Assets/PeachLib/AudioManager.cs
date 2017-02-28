@@ -9,6 +9,9 @@ using UnityEngine;
 public class AudioManager : Singleton<AudioManager>
 {
 
+    // Use this to mute game during production
+    public bool mute;
+
     private AudioSource musicChannel;
     private AudioSource soundChannel;
     private Dictionary<string, AudioClip> soundMap;
@@ -30,6 +33,8 @@ public class AudioManager : Singleton<AudioManager>
         {
             soundMap.Add(clip.name, clip);
         }
+
+        ToggleMute(mute);
 
         //Kick off initial theme here
         //PlayMusicWithIntro("exampleIntro", "exampleLoop", .25f);
