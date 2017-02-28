@@ -5,10 +5,14 @@ using UnityEngine;
 public class ScoreTester : MonoBehaviour
 {
 
-    // Use this for initialization
-    void Start()
+    public bool isTestingOn;
+
+    public void RunTests()
     {
-       // TestScore();
+        if (isTestingOn)
+        {
+            TestScore();
+        }
     }
 
     private void TestScore()
@@ -29,7 +33,8 @@ public class ScoreTester : MonoBehaviour
         catchList.Add(rBass);
 
         StatsManager.instance.playerCatches.Add(1, catchList);
-        GetComponent<ScoreManager>().ProcessCatches(catchList, -6);
-        GetComponent<ScoreManager>().UpdateScores();
+        StatsManager.instance.playerCatches.Add(2, catchList);
+        StatsManager.instance.playerCatches.Add(3, catchList);
+        StatsManager.instance.playerCatches.Add(4, catchList);
     }
 }

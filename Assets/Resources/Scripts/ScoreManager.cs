@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
 
-    private bool isRevealingScores = true; //TODO: Dont set to true
+    private bool isRevealingScores = true; //TODO: Dont set to true immediately
     private float revealRate = 0.5f;
     private float revealElapsedTime;
-    private float startingYPosition = 3;
-    private float yPositionChange = 0.6f;
+    private float startingYPosition = 3.9f;
+    private float yPositionChange = 0.65f;
 
     private List<Queue<GameObject>> blocks;
 
@@ -27,6 +27,8 @@ public class ScoreManager : MonoBehaviour
 
     void Start()
     {
+        GetComponent<ScoreTester>().RunTests();
+
         PointProcessor.instance.CalculateGroupPoints(StatsManager.instance.playerCatches);
 
         for (int i = 1; i < StatsManager.instance.numPlayers + 1; i++)
@@ -83,7 +85,7 @@ public class ScoreManager : MonoBehaviour
         int value = 0;
         int count = 0;
         float yPosition = startingYPosition;
-        float xPosition = -10 + 4 * playerNum;
+        float xPosition = -11.25f + 4.5f * playerNum;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.GREEN_BASS, out count);
         GameObject block1 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);

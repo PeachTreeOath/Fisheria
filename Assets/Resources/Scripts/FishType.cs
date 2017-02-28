@@ -13,7 +13,11 @@ public enum FishType
     TIGER_SHARK,
     GREAT_WHITE_SHARK,
     SALMON,
-    PUFFER
+    PUFFER,
+    JELLYFISH,
+    LOBSTER,
+    WHALE,
+    FISHXODIA
 
 }
 
