@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,10 +15,13 @@ public class ScoreManager : MonoBehaviour
     private float yPositionChange = 0.65f;
 
     private List<Queue<GameObject>> blocks;
+    private bool[] activatedShops;
 
     // Use this for initialization
     void Awake()
     {
+        activatedShops = new bool[5];
+
         blocks = new List<Queue<GameObject>>();
         for (int i = 0; i < 4; i++)
         {
@@ -73,10 +77,39 @@ public class ScoreManager : MonoBehaviour
             {
                 if (Input.GetButtonDown("FireA" + i) || Input.GetButtonDown("FireB" + i))
                 {
-                    SceneTransitionManager.instance.GoToGame();
+                    ActivateShop(i);
+
+                    //TODO: Check for all ready
+                    //SceneTransitionManager.instance.GoToGame();
                 }
             }
         }
+    }
+
+    private void ActivateShop(int playerNum)
+    {
+        // Check if player is already in shop
+        if(activatedShops[playerNum])
+        {
+            return;
+        }
+
+        GameObject scorePanel = GameObject.Find("ScorePanel" + playerNum);
+
+        // Destroy score blocks
+        ScoreBlock[] blocks = scorePanel.GetComponentsInChildren<ScoreBlock>();
+        foreach(ScoreBlock block in blocks)
+        {
+            Destroy(block.gameObject);
+        }
+
+        // Change title to SHOP
+        Transform titleText = scorePanel.transform.Find("Canvas").Find("Title");
+        titleText.GetComponent<Text>().text = "SHOP";
+
+        // Start shop
+        scorePanel.transform.Find("ShopManager").gameObject.SetActive(true);
+        activatedShops[playerNum] = true;
     }
 
     public void ProcessCatches(List<FishController> fishController, int playerNum)
@@ -88,42 +121,33 @@ public class ScoreManager : MonoBehaviour
         float xPosition = -11.25f + 4.5f * playerNum;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.GREEN_BASS, out count);
-        GameObject block1 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block1.transform.position = new Vector2(xPosition, yPosition);
-        block1.GetComponent<ScoreBlock>().PopulateBlock(FishType.GREEN_BASS, count, value);
+        GameObject block1 = CreateScoreBlock(value, count, FishType.GREEN_BASS, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
         totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.BLUE_BASS, out count);
-        GameObject block2 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block2.transform.position = new Vector2(xPosition, yPosition);
-        block2.GetComponent<ScoreBlock>().PopulateBlock(FishType.BLUE_BASS, count, value);
+        GameObject block2 = CreateScoreBlock(value, count, FishType.BLUE_BASS, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
         totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.RED_BASS, out count);
-        GameObject block3 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block3.transform.position = new Vector2(xPosition, yPosition);
-        block3.GetComponent<ScoreBlock>().PopulateBlock(FishType.RED_BASS, count, value);
+        GameObject block3 = CreateScoreBlock(value, count, FishType.RED_BASS, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
         totalValue += value;
 
         value = PointProcessor.instance.GetTroutValue(playerNum, out count);
-        GameObject block4 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block4.transform.position = new Vector2(xPosition, yPosition);
-        block4.GetComponent<ScoreBlock>().PopulateBlock(FishType.TROUT, count, value);
+        GameObject block4 = CreateScoreBlock(value, count, FishType.TROUT, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
         totalValue += value;
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.OYSTER, out count);
-        GameObject block5 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block5.transform.position = new Vector2(xPosition, yPosition);
-        block5.GetComponent<ScoreBlock>().PopulateBlock(FishType.OYSTER, count, value);
+        GameObject block5 = CreateScoreBlock(value, count, FishType.OYSTER, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
         totalValue += value;
 
         GameObject block6 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         block6.transform.position = new Vector2(xPosition, yPosition);
+        block6.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
         ScoreBlock totalBlock = block6.GetComponent<ScoreBlock>();
         totalBlock.nameText.text = "Total";
         totalBlock.countText.text = " ";
@@ -138,6 +162,16 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block6);
 
         //playerGear[player.playerNum - 1].gold += value;
+    }
+
+    private GameObject CreateScoreBlock(int value, int count, FishType type, float xPosition, float yPosition, int playerNum)
+    {
+        GameObject block = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
+        block.transform.position = new Vector2(xPosition, yPosition);
+        block.GetComponent<ScoreBlock>().PopulateBlock(type, count, value);
+        block.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
+
+        return block;
     }
 
     public void UpdateScores()
