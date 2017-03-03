@@ -68,5 +68,6 @@ public class Cursor : MonoBehaviour
     public void SetManager(ShopManager mgr)
     {
         manager = mgr;
+        UpdateUI();
     }
 }
