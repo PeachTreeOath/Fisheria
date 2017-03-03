@@ -8,7 +8,8 @@ using UnityEngine.UI;
 public class ScoreManager : MonoBehaviour
 {
 
-    private bool isRevealingScores = true; //TODO: Dont set to true immediately
+    private bool isRevealingScores = true;
+    private bool finishedRevealing = false;
     private float revealRate = 0.5f;
     private float revealElapsedTime;
     private float startingYPosition = 3.9f;
@@ -53,7 +54,13 @@ public class ScoreManager : MonoBehaviour
     {
         if (blocks[0].Count == 0)
         {
-            isRevealingScores = false;
+            // Force 1-time logic to happen when blocks are finished showing
+            if(!finishedRevealing)
+            {
+                ActivateCursors();
+                isRevealingScores = false;
+                finishedRevealing = true;
+            }
         }
         if (isRevealingScores)
         {
@@ -86,6 +93,16 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    private void ActivateCursors()
+    {
+        for (int i = 1; i < 5; i++)
+        {
+            GameObject scorePanel = GameObject.Find("ScorePanel" + i);
+            scorePanel.transform.Find("Cursor").gameObject.SetActive(true);
+            scorePanel.transform.Find("ReadyCanvas/Shop").gameObject.SetActive(true);
+        }
+    }
+
     private void ActivateShop(int playerNum)
     {
         // Check if player is already in shop
@@ -109,6 +126,10 @@ public class ScoreManager : MonoBehaviour
 
         // Start shop
         scorePanel.transform.Find("ShopManager").gameObject.SetActive(true);
+        scorePanel.transform.Find("ItemTitle").gameObject.SetActive(true);
+        scorePanel.transform.Find("ItemCanvas").gameObject.SetActive(true);
+        scorePanel.transform.Find("ReadyCanvas/Shop").gameObject.SetActive(false);
+        scorePanel.transform.Find("ReadyCanvas/Ready").gameObject.SetActive(true);
         activatedShops[playerNum] = true;
     }
 

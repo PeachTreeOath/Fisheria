@@ -10,8 +10,8 @@ public class MenuCursor : MonoBehaviour
 {
 
     public MenuSelectable startingMenuItem;
-    
-    private MenuSelectable currentMenuItem;
+    public MenuSelectable currentMenuItem { get; private set; }
+
     private Vector3 cursorOffset;
 
     // Use this for initialization
@@ -62,4 +62,5 @@ public class MenuCursor : MonoBehaviour
         transform.position = nextItem.transform.position + cursorOffset;
         currentMenuItem = nextItem;
     }
+
 }
