@@ -46,4 +46,13 @@ public class ShopManager : MonoBehaviour
             costText.text = "";
         }
     }
+
+    public void ProcessButton(ItemInfo item)
+    {
+        if (item.title.Equals("Ready"))
+        {
+            //TODO: Check for all ready
+            SceneTransitionManager.instance.GoToGame();
+        }
+    }
 }

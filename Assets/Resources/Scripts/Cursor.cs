@@ -14,6 +14,7 @@ public class Cursor : MonoBehaviour
     private bool axisPressed;
     private string hAxis;
     private string vAxis;
+    private string buttonPress;
     private ShopManager manager;
 
     // Use this for initialization
@@ -22,6 +23,7 @@ public class Cursor : MonoBehaviour
         menuCursor = GetComponentInParent<MenuCursor>();
         hAxis = "Horizontal" + playerNum;
         vAxis = "Vertical" + playerNum;
+        buttonPress = "FireA" + playerNum;
     }
 
     // Update is called once per frame
@@ -29,7 +31,7 @@ public class Cursor : MonoBehaviour
     {
         transform.localPosition = new Vector3(0, -Mathf.Abs(Mathf.Sin(Time.time * 4)) / 4, 0);
 
-        if(!allowInputs)
+        if (!allowInputs)
         {
             return;
         }
@@ -64,12 +66,31 @@ public class Cursor : MonoBehaviour
         {
             axisPressed = false;
         }
+
+        if (Input.GetButtonDown(buttonPress))
+        {
+            ProcessButton();
+        }
     }
 
     private void UpdateUI()
     {
         ItemInfo item = menuCursor.currentMenuItem.GetComponent<ItemInfo>();
-        manager.UpdateUI(item);
+        if (manager != null)
+        {
+            manager.UpdateUI(item);
+        }
+    }
+
+    private void ProcessButton()
+    {
+        ItemInfo item = menuCursor.currentMenuItem.GetComponent<ItemInfo>();
+        // This null check will prevent a double tap of entering the shop so
+        // keep manager setting logic as is.
+        if (manager != null)
+        {
+            manager.ProcessButton(item);
+        }
     }
 
     public void SetManager(ShopManager mgr)

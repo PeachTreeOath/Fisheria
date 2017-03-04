@@ -106,10 +106,11 @@ public class FishermanController : MonoBehaviour
     private void InitStats()
     {
         FishermanGear gear = StatsManager.instance.playerGear[playerNum - 1];
-        speedLevel = gear.speedLevel;
-        rangeLevel = gear.rangeLevel;
-        rodLevel = gear.rodLevel;
-        resetLevel = gear.resetLevel;
+        //TODO temp testing powerup
+        speedLevel = gear.speedLevel + 1;
+        rangeLevel = gear.rangeLevel + 1;
+        rodLevel = gear.rodLevel + 1;
+        resetLevel = gear.resetLevel + 1;
 
         resetSpeed = 2 - resetLevel * 0.5f;
     }
@@ -151,7 +152,7 @@ public class FishermanController : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < numPearls+1; i++)
+            for (int i = 0; i < numPearls + 1; i++)
             {
                 catchList.Add(fish);
             }

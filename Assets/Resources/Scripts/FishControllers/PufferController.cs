@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class PufferController : FishController
     public Vector2 bottomRightBound;
 
     private float moveSpeed = 0.5f;
-    private bool isPuffed = true;
+        private bool isPuffed = true;
     private Vector2 nextLocation;
     private GameObject nonPuffObj;
     private GameObject puffObj;
@@ -65,4 +66,10 @@ public class PufferController : FishController
             yield return new WaitForSeconds(5);
         }
     }
+
+    public void OnCollision(Collider2D col)
+    {
+        OnTriggerEnter2D(col);
+    }
+
 }

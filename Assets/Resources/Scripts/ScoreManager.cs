@@ -55,7 +55,7 @@ public class ScoreManager : MonoBehaviour
         if (blocks[0].Count == 0)
         {
             // Force 1-time logic to happen when blocks are finished showing
-            if(!finishedRevealing)
+            if (!finishedRevealing)
             {
                 ActivateCursors();
                 isRevealingScores = false;
@@ -85,9 +85,6 @@ public class ScoreManager : MonoBehaviour
                 if (Input.GetButtonDown("FireA" + i) || Input.GetButtonDown("FireB" + i))
                 {
                     ActivateShop(i);
-
-                    //TODO: Check for all ready
-                    //SceneTransitionManager.instance.GoToGame();
                 }
             }
         }
@@ -106,7 +103,7 @@ public class ScoreManager : MonoBehaviour
     private void ActivateShop(int playerNum)
     {
         // Check if player is already in shop
-        if(activatedShops[playerNum])
+        if (activatedShops[playerNum])
         {
             return;
         }
@@ -115,7 +112,7 @@ public class ScoreManager : MonoBehaviour
 
         // Destroy score blocks
         ScoreBlock[] blocks = scorePanel.GetComponentsInChildren<ScoreBlock>();
-        foreach(ScoreBlock block in blocks)
+        foreach (ScoreBlock block in blocks)
         {
             Destroy(block.gameObject);
         }
@@ -184,6 +181,10 @@ public class ScoreManager : MonoBehaviour
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.PUFFER, out count);
         GameObject block9 = CreateScoreBlock(value, count, FishType.PUFFER, xPosition, yPosition, playerNum);
+        if (value < 0)
+        {
+            block9.transform.Find("Canvas/Value").GetComponent<Text>().color = Color.red;
+        }
         yPosition -= yPositionChange;
         totalValue += value;
 
