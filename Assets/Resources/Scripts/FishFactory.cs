@@ -16,6 +16,11 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnBass", 0);
         Invoke("SpawnTrout", 3);
         Invoke("SpawnOyster", 0);
+        Invoke("SpawnShark", 0);
+        Invoke("SpawnSalmon", 0);
+        Invoke("SpawnPuffer", 0);
+        Invoke("SpawnPuffer", 0);
+        Invoke("SpawnPuffer", 0);
     }
 
     private int GetDirectionMultiplier(int direction)
@@ -44,6 +49,18 @@ public class FishFactory : MonoBehaviour
     {
         CreateOyster();
         Invoke("SpawnOyster", UnityEngine.Random.Range(10, 20));
+    }
+
+    private void SpawnShark()
+    {
+        CreateShark();
+        Invoke("SpawnShark", 10f);
+    }
+
+    private void SpawnSalmon()
+    {
+        CreateSalmon();
+        Invoke("SpawnSalmon", 10f);
     }
 
     private BassController CreateBass()
@@ -97,5 +114,41 @@ public class FishFactory : MonoBehaviour
         oyster.type = FishType.OYSTER;
 
         return oyster;
+    }
+
+    private SharkController CreateShark()
+    {
+        float yValue = Random.Range(-1.75f, -1.25f);
+        int direction = Random.Range(0, 2);
+
+        SharkController[] sharkPack = (Instantiate<GameObject>(loader.sharkObj)).GetComponentsInChildren<SharkController>();
+        foreach (SharkController shark in sharkPack)
+        {
+            shark.Spawn(new Vector3(xLimit * GetDirectionMultiplier(direction), yValue) + shark.transform.localPosition, direction == 1);
+            if (shark.name.Equals("tigerShark"))
+            {
+                shark.type = FishType.TIGER_SHARK;
+            }
+            else
+            {
+                shark.type = FishType.GREAT_WHITE_SHARK;
+            }
+        }
+
+        return sharkPack[0];
+    }
+
+    private SalmonController CreateSalmon()
+    {
+        float yValue = Random.Range(-4.25f, -3.25f);
+        int direction = Random.Range(0, 2);
+        float speed = UnityEngine.Random.Range(1f, 3f);
+
+        SalmonController salmon = (Instantiate<GameObject>(loader.salmonObj)).GetComponent<SalmonController>();
+        salmon.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue), direction == 1);
+        salmon.SetSpeed(speed);
+        salmon.type = FishType.SALMON;
+
+        return salmon;
     }
 }

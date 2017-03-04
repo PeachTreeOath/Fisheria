@@ -582,7 +582,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1245831757}
-  m_RootOrder: 10
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &770837342
 SpriteRenderer:
@@ -1510,9 +1510,9 @@ Transform:
   - {fileID: 1162804949}
   - {fileID: 797551614}
   - {fileID: 830347254}
-  - {fileID: 770837341}
-  - {fileID: 929662885}
   - {fileID: 2053621859}
+  - {fileID: 929662885}
+  - {fileID: 770837341}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2079,7 +2079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5147059, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.86764705, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -2434,7 +2434,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1245831757}
-  m_RootOrder: 12
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2053621860
 SpriteRenderer:
@@ -2575,7 +2575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fba8009b9edd64bbb5df5826db3599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 10
+  roundTime: 30
 --- !u!4 &2081982828
 Transform:
   m_ObjectHideFlags: 0

@@ -235,6 +235,9 @@ MonoBehaviour:
   bassObj: {fileID: 0}
   troutObj: {fileID: 0}
   oysterObj: {fileID: 0}
+  sharkObj: {fileID: 0}
+  salmonObj: {fileID: 0}
+  pufferObj: {fileID: 0}
   scoreBlockObj: {fileID: 0}
 --- !u!1 &1256911030
 GameObject:
