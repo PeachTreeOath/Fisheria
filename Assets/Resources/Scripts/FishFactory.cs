@@ -16,6 +16,7 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnBass", 0);
         Invoke("SpawnTrout", 3);
         Invoke("SpawnOyster", 0);
+        Invoke("SpawnOyster", 0);
         Invoke("SpawnShark", 0);
         Invoke("SpawnSalmon", 0);
         Invoke("SpawnPuffer", 0);

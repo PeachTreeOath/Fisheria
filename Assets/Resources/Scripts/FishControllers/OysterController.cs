@@ -9,8 +9,8 @@ public class OysterController : FishController
     public Sprite openSprite;
     public Sprite closedSprite;
 
-    public float minOpenTime = 15;
-    public float maxOpenTime = 30;
+    public float minOpenTime = 5;
+    public float maxOpenTime = 20;
 
     private float nextOpen;
     private float elapsedTime;

@@ -133,9 +133,13 @@ public class FishermanController : MonoBehaviour
         resetElapsedTime = 0;
         //TODO Temp indicator of readying cast
         GetComponent<SpriteRenderer>().color = Color.black;
-        numPearls = 0;
+        if (!pearlCaughtThisCatch)
+        {
+            numPearls = 0;
+        }
+        pearlCaughtThisCatch = false;
     }
-
+    private bool pearlCaughtThisCatch;
     // Callback when hook returns back to player with a fish
     public void CaughtFish(FishController fish)
     {
@@ -143,10 +147,11 @@ public class FishermanController : MonoBehaviour
         if (fish.type == FishType.OYSTER)
         {
             numPearls++;
+            pearlCaughtThisCatch = true;
         }
         else
         {
-            for (int i = -1; i < numPearls; i++)
+            for (int i = 0; i < numPearls+1; i++)
             {
                 catchList.Add(fish);
             }

@@ -31,7 +31,18 @@ public class ScoreTester : MonoBehaviour
         BassController rBass = (Instantiate<GameObject>(ResourceLoader.instance.bassObj)).GetComponent<BassController>();
         rBass.type = FishType.RED_BASS;
         catchList.Add(rBass);
-
+        for (int i = 0; i < 5; i++)
+        {
+            SalmonController fish = (Instantiate<GameObject>(ResourceLoader.instance.salmonObj)).GetComponent<SalmonController>();
+            fish.type = FishType.SALMON;
+            catchList.Add(fish);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            PufferController fish = (Instantiate<GameObject>(ResourceLoader.instance.pufferObj)).GetComponent<PufferController>();
+            fish.type = FishType.PUFFER;
+            catchList.Add(fish);
+        }
         StatsManager.instance.playerCatches.Add(1, catchList);
         StatsManager.instance.playerCatches.Add(2, catchList);
         StatsManager.instance.playerCatches.Add(3, catchList);

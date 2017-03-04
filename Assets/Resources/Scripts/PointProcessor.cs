@@ -120,6 +120,11 @@ public class PointProcessor : Singleton<PointProcessor>
                 return GetTigerSharkValue(catchList, out count);
             case FishType.GREAT_WHITE_SHARK:
                 return GetGreatWhiteSharkValue(catchList, out count);
+            case FishType.SALMON:
+                return GetSalmonValue(catchList, out count);
+            case FishType.PUFFER:
+                return GetPufferValue(catchList, out count);
+
         }
 
         count = 0;
@@ -151,6 +156,11 @@ public class PointProcessor : Singleton<PointProcessor>
         return GetStandardValue(catchList, FishType.GREAT_WHITE_SHARK, greatWhiteSharkValue, out count);
     }
 
+    private int GetPufferValue(List<FishController> catchList, out int count)
+    {
+        return GetStandardValue(catchList, FishType.PUFFER, pufferValue, out count);
+    }
+
     // Used for calculating simple fish count by value
     private int GetStandardValue(List<FishController> catchList, FishType type, int value, out int count)
     {
@@ -170,4 +180,24 @@ public class PointProcessor : Singleton<PointProcessor>
         return total;
     }
 
+    private int GetSalmonValue(List<FishController> catchList, out int count)
+    {
+        int total = 0;
+        int totalCount = 0;
+
+        int currentValue = 1;
+
+        foreach (FishController fish in catchList)
+        {
+            if (fish.type == FishType.SALMON)
+            {
+                total += currentValue;
+                totalCount++;
+                currentValue += totalCount + 1;
+            }
+        }
+        
+        count = totalCount;
+        return total;
+    }
 }

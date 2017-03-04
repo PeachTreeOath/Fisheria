@@ -58,7 +58,6 @@ public class HookController : MonoBehaviour
             if (hookedObject.transform.position.y < origPos.y)
             {
                 ProcessFish();
-                EndCast();
             }
         }
     }
@@ -82,6 +81,9 @@ public class HookController : MonoBehaviour
     {
         catchCb(hookedObject);
         Destroy(hookedObject.gameObject);
+        sprite.enabled = false;
+        transform.localPosition = origLocalPos;
+        castState = CastState.READY;
     }
 
     public void EndCast()

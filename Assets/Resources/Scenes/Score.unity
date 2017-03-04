@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587c35fa25f0ab943af813c785394a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestingOn: 1
+  isTestingOn: 0
 --- !u!114 &802442504
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,8 +491,11 @@ MonoBehaviour:
   greenBassValue: 1
   blueBassValue: 3
   redBassValue: 10
-  troutValue: 100
-  troutSecondValue: 50
+  troutValue: 40
+  troutSecondValue: 20
+  tigerSharkValue: 5
+  greatWhiteSharkValue: 35
+  pufferValue: -10
 --- !u!1 &923595616
 GameObject:
   m_ObjectHideFlags: 0

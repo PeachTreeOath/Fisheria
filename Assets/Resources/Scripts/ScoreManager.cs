@@ -177,6 +177,16 @@ public class ScoreManager : MonoBehaviour
         yPosition -= yPositionChange;
         totalValue += value;
 
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.SALMON, out count);
+        GameObject block8 = CreateScoreBlock(value, count, FishType.SALMON, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.PUFFER, out count);
+        GameObject block9 = CreateScoreBlock(value, count, FishType.PUFFER, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
         GameObject scoreBlock = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         scoreBlock.transform.position = new Vector2(xPosition, yPosition);
         scoreBlock.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
@@ -191,6 +201,10 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block3);
         blocks[playerNum - 1].Enqueue(block4);
         blocks[playerNum - 1].Enqueue(block5);
+        blocks[playerNum - 1].Enqueue(block6);
+        blocks[playerNum - 1].Enqueue(block7);
+        blocks[playerNum - 1].Enqueue(block8);
+        blocks[playerNum - 1].Enqueue(block9);
         blocks[playerNum - 1].Enqueue(scoreBlock);
 
         //playerGear[player.playerNum - 1].gold += value;
