@@ -167,10 +167,20 @@ public class ScoreManager : MonoBehaviour
         yPosition -= yPositionChange;
         totalValue += value;
 
-        GameObject block6 = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
-        block6.transform.position = new Vector2(xPosition, yPosition);
-        block6.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
-        ScoreBlock totalBlock = block6.GetComponent<ScoreBlock>();
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.TIGER_SHARK, out count);
+        GameObject block6 = CreateScoreBlock(value, count, FishType.TIGER_SHARK, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.GREAT_WHITE_SHARK, out count);
+        GameObject block7 = CreateScoreBlock(value, count, FishType.GREAT_WHITE_SHARK, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
+        GameObject scoreBlock = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
+        scoreBlock.transform.position = new Vector2(xPosition, yPosition);
+        scoreBlock.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
+        ScoreBlock totalBlock = scoreBlock.GetComponent<ScoreBlock>();
         totalBlock.nameText.text = "Total";
         totalBlock.countText.text = " ";
         totalBlock.valueText.text = "$" + totalValue;
@@ -181,7 +191,7 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block3);
         blocks[playerNum - 1].Enqueue(block4);
         blocks[playerNum - 1].Enqueue(block5);
-        blocks[playerNum - 1].Enqueue(block6);
+        blocks[playerNum - 1].Enqueue(scoreBlock);
 
         //playerGear[player.playerNum - 1].gold += value;
     }

@@ -30,6 +30,7 @@ public class FishermanController : MonoBehaviour
     private float xLimit = 8.25f;
     private float resetSpeed;
     private float resetElapsedTime;
+    private int numPearls;
 
     // Use this for initialization
     void Start()
@@ -104,7 +105,7 @@ public class FishermanController : MonoBehaviour
 
     private void InitStats()
     {
-        FishermanGear gear = StatsManager.instance.playerGear[playerNum-1];
+        FishermanGear gear = StatsManager.instance.playerGear[playerNum - 1];
         speedLevel = gear.speedLevel;
         rangeLevel = gear.rangeLevel;
         rodLevel = gear.rodLevel;
@@ -132,13 +133,25 @@ public class FishermanController : MonoBehaviour
         resetElapsedTime = 0;
         //TODO Temp indicator of readying cast
         GetComponent<SpriteRenderer>().color = Color.black;
+        numPearls = 0;
     }
 
-    // Callback when hook returns back to player with a fish
+        // Callback when hook returns back to player with a fish
     public void CaughtFish(FishController fish)
     {
-        catchList.Add(fish);
+        // Allow players to stack pearls as powers of 2 for huge combos
+        if (fish.type == FishType.OYSTER)
+        {
+            numPearls++;
+        }
+        else
+        {
+            for (int i = 0; i < Mathf.Pow(2, numPearls); i++)
+            {
+                catchList.Add(fish);
+            }
+        }
+
         CastFinished();
     }
-
 }

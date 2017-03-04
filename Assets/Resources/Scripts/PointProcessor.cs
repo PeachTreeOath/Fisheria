@@ -12,6 +12,9 @@ public class PointProcessor : Singleton<PointProcessor>
     public int redBassValue;
     public int troutValue;
     public int troutSecondValue;
+    public int tigerSharkValue;
+    public int greatWhiteSharkValue;
+    public int pufferValue;
 
     private Dictionary<int, int> troutValues;
     private Dictionary<int, int> troutCounts;
@@ -96,33 +99,6 @@ public class PointProcessor : Singleton<PointProcessor>
         }
     }
 
-    //TODO: Possibly obsolete
-    public int GetCatchValue(List<FishController> catchList)
-    {
-        int total = 0;
-
-        foreach (FishController fish in catchList)
-        {
-            if (fish is BassController)
-            {
-                switch (fish.type)
-                {
-                    case FishType.GREEN_BASS:
-                        total += greenBassValue;
-                        break;
-                    case FishType.BLUE_BASS:
-                        total += blueBassValue;
-                        break;
-                    case FishType.RED_BASS:
-                        total += redBassValue;
-                        break;
-                }
-            }
-        }
-
-        return total;
-    }
-
     public int GetTroutValue(int playerNum, out int count)
     {
         count = troutCounts[playerNum];
@@ -140,12 +116,10 @@ public class PointProcessor : Singleton<PointProcessor>
                 return GetBlueBassValue(catchList, out count);
             case FishType.RED_BASS:
                 return GetRedBassValue(catchList, out count);
-            case FishType.TROUT:
-                count = 0;
-                return 0;
-            case FishType.OYSTER:
-                GetOysterCount(catchList, out count);
-                return 0;
+            case FishType.TIGER_SHARK:
+                return GetTigerSharkValue(catchList, out count);
+            case FishType.GREAT_WHITE_SHARK:
+                return GetGreatWhiteSharkValue(catchList, out count);
         }
 
         count = 0;
@@ -154,17 +128,27 @@ public class PointProcessor : Singleton<PointProcessor>
 
     private int GetGreenBassValue(List<FishController> catchList, out int count)
     {
-        return GetStandardValue(catchList, FishType.GREEN_BASS, 1, out count);
+        return GetStandardValue(catchList, FishType.GREEN_BASS, greenBassValue, out count);
     }
 
     private int GetBlueBassValue(List<FishController> catchList, out int count)
     {
-        return GetStandardValue(catchList, FishType.BLUE_BASS, 3, out count);
+        return GetStandardValue(catchList, FishType.BLUE_BASS, blueBassValue, out count);
     }
 
     private int GetRedBassValue(List<FishController> catchList, out int count)
     {
-        return GetStandardValue(catchList, FishType.RED_BASS, 10, out count);
+        return GetStandardValue(catchList, FishType.RED_BASS, redBassValue, out count);
+    }
+
+    private int GetTigerSharkValue(List<FishController> catchList, out int count)
+    {
+        return GetStandardValue(catchList, FishType.TIGER_SHARK, tigerSharkValue, out count);
+    }
+
+    private int GetGreatWhiteSharkValue(List<FishController> catchList, out int count)
+    {
+        return GetStandardValue(catchList, FishType.GREAT_WHITE_SHARK, greatWhiteSharkValue, out count);
     }
 
     // Used for calculating simple fish count by value
@@ -186,22 +170,4 @@ public class PointProcessor : Singleton<PointProcessor>
         return total;
     }
 
-    // Used for calculating simple fish count by value
-    private int GetOysterCount(List<FishController> catchList, out int count)
-    {
-        int total = 0;
-        int totalCount = 0;
-
-        foreach (FishController fish in catchList)
-        {
-            if (fish.type == FishType.OYSTER)
-            {
-                total += 30;
-                totalCount++;
-            }
-        }
-
-        count = totalCount;
-        return total;
-    }
 }

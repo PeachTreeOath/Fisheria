@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 147560710}
   - component: {fileID: 147560711}
   m_Layer: 8
-  m_Name: clamGuide
+  m_Name: oysterGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1967,7 +1967,7 @@ GameObject:
   - component: {fileID: 1635042672}
   - component: {fileID: 1635042671}
   m_Layer: 8
-  m_Name: ClamText
+  m_Name: OysterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2023,9 +2023,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '2x value
-
-    next catch'
+  m_Text: Next catch worth 2 catches
 --- !u!222 &1635042672
 CanvasRenderer:
   m_ObjectHideFlags: 0
