@@ -565,7 +565,7 @@ GameObject:
   - component: {fileID: 770837341}
   - component: {fileID: 770837342}
   m_Layer: 8
-  m_Name: emptyGuide (8)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 797551614}
   - component: {fileID: 797551615}
   m_Layer: 8
-  m_Name: emptyGuide (3)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -757,7 +757,7 @@ GameObject:
   - component: {fileID: 830347254}
   - component: {fileID: 830347255}
   m_Layer: 8
-  m_Name: emptyGuide (4)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ GameObject:
   - component: {fileID: 929662885}
   - component: {fileID: 929662886}
   m_Layer: 8
-  m_Name: emptyGuide (9)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,7 +1191,7 @@ GameObject:
   - component: {fileID: 1162804949}
   - component: {fileID: 1162804950}
   m_Layer: 8
-  m_Name: emptyGuide (2)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2308,12 +2308,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '$25
+  m_Text: '$35
 
 
 
 
-    $2'
+    $5'
 --- !u!222 &1859173076
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2417,7 +2417,7 @@ GameObject:
   - component: {fileID: 2053621859}
   - component: {fileID: 2053621860}
   m_Layer: 8
-  m_Name: emptyGuide (10)
+  m_Name: emptyGuide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

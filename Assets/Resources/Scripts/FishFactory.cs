@@ -60,7 +60,12 @@ public class FishFactory : MonoBehaviour
     private void SpawnSalmon()
     {
         CreateSalmon();
-        Invoke("SpawnSalmon", 10f);
+        Invoke("SpawnSalmon", 1.5f);
+    }
+
+    private void SpawnPuffer()
+    {
+        CreatePuffer();
     }
 
     private BassController CreateBass()
@@ -140,7 +145,7 @@ public class FishFactory : MonoBehaviour
 
     private SalmonController CreateSalmon()
     {
-        float yValue = Random.Range(-4.25f, -3.25f);
+        float yValue = Random.Range(-2.75f, -0.25f);
         int direction = Random.Range(0, 2);
         float speed = UnityEngine.Random.Range(1f, 3f);
 
@@ -150,5 +155,17 @@ public class FishFactory : MonoBehaviour
         salmon.type = FishType.SALMON;
 
         return salmon;
+    }
+
+    private PufferController CreatePuffer()
+    {
+        float xValue = Random.Range(-6, 6f);
+        float yValue = Random.Range(-2.75f, -0.25f);
+
+        PufferController puffer = (Instantiate<GameObject>(loader.pufferObj)).GetComponent<PufferController>();
+        puffer.Spawn(new Vector2(xValue, yValue));
+        puffer.type = FishType.PUFFER;
+
+        return puffer;
     }
 }

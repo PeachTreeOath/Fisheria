@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4652689862899004}
   - component: {fileID: 212184810831420726}
   - component: {fileID: 70737072246932820}
+  - component: {fileID: 114241663973171952}
   m_Layer: 0
   m_Name: Salmon
   m_TagString: Untagged
@@ -55,6 +56,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.26, y: 0.525}
   m_Direction: 0
+--- !u!114 &114241663973171952
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1311270687862228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbbb57aabeb535144bca60bedc638738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212184810831420726
 SpriteRenderer:
   m_ObjectHideFlags: 1
