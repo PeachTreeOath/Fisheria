@@ -159,10 +159,9 @@ public class FishFactory : MonoBehaviour
 
     private PufferController CreatePuffer()
     {
-        float xValue = Random.Range(-6, 6f);
-        float yValue = Random.Range(-2.75f, -0.25f);
-
         PufferController puffer = (Instantiate<GameObject>(loader.pufferObj)).GetComponent<PufferController>();
+        float xValue = Random.Range(puffer.topLeftBound.x, puffer.bottomRightBound.x);
+        float yValue = Random.Range(puffer.bottomRightBound.y, puffer.topLeftBound.y);
         puffer.Spawn(new Vector2(xValue, yValue));
         puffer.type = FishType.PUFFER;
 
