@@ -8,6 +8,7 @@ public class Cursor : MonoBehaviour
 
     public int playerNum;
     public float cursorThreshold;
+    public bool allowInputs;
 
     private MenuCursor menuCursor;
     private bool axisPressed;
@@ -27,6 +28,11 @@ public class Cursor : MonoBehaviour
     void Update()
     {
         transform.localPosition = new Vector3(0, -Mathf.Abs(Mathf.Sin(Time.time * 4)) / 4, 0);
+
+        if(!allowInputs)
+        {
+            return;
+        }
 
         if (!axisPressed && Input.GetAxis(hAxis) < -cursorThreshold)
         {
@@ -65,6 +71,7 @@ public class Cursor : MonoBehaviour
         ItemInfo item = menuCursor.currentMenuItem.GetComponent<ItemInfo>();
         manager.UpdateUI(item);
     }
+
     public void SetManager(ShopManager mgr)
     {
         manager = mgr;

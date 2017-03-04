@@ -141,8 +141,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba03cb3abdcf7040b87a81c3510bf9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  topLeftBound: {x: -7.5, y: 2.25}
-  bottomRightBound: {x: 7.5, y: 0.75}
+  topLeftBound: {x: -7.5, y: -0.75}
+  bottomRightBound: {x: 7.5, y: -2.25}
 --- !u!212 &212619245392200338
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -130,6 +130,7 @@ public class ScoreManager : MonoBehaviour
         scorePanel.transform.Find("ItemCanvas").gameObject.SetActive(true);
         scorePanel.transform.Find("ReadyCanvas/Shop").gameObject.SetActive(false);
         scorePanel.transform.Find("ReadyCanvas/Ready").gameObject.SetActive(true);
+        scorePanel.transform.Find("Cursor/CursorImage").GetComponent<Cursor>().allowInputs = true;
         activatedShops[playerNum] = true;
     }
 
