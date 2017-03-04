@@ -21,6 +21,7 @@ public class HookController : MonoBehaviour
     private FishController hookedObject;
     private Vector2 vectorDiff;
     private BoxCollider2D boxCollider;
+    private Quaternion origRotation;
 
     // Use this for initialization
     void Start()
@@ -30,6 +31,7 @@ public class HookController : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         origPos = transform.position;
         origLocalPos = transform.localPosition;
+        origRotation = transform.localRotation;
         castState = CastState.READY;
     }
 
@@ -75,6 +77,7 @@ public class HookController : MonoBehaviour
         SetVars(speedLevel, rodLevel, rangeLevel);
         castState = CastState.CASTING;
         origPos = transform.position;
+        transform.localRotation = origRotation;
     }
 
     private void ProcessFish()
