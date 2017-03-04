@@ -136,17 +136,17 @@ public class FishermanController : MonoBehaviour
         numPearls = 0;
     }
 
-        // Callback when hook returns back to player with a fish
+    // Callback when hook returns back to player with a fish
     public void CaughtFish(FishController fish)
     {
-        // Allow players to stack pearls as powers of 2 for huge combos
+        // Allow players to stack pearls for huge combos
         if (fish.type == FishType.OYSTER)
         {
             numPearls++;
         }
         else
         {
-            for (int i = 0; i < Mathf.Pow(2, numPearls); i++)
+            for (int i = -1; i < numPearls; i++)
             {
                 catchList.Add(fish);
             }
