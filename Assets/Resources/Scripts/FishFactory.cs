@@ -17,7 +17,7 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnTrout", 3);
         Invoke("SpawnOyster", 0);
         Invoke("SpawnOyster", 0);
-        Invoke("SpawnShark", 0);
+        Invoke("SpawnShark", 3);
         Invoke("SpawnSalmon", 0);
         Invoke("SpawnPuffer", 0);
         Invoke("SpawnPuffer", 0);
@@ -56,13 +56,13 @@ public class FishFactory : MonoBehaviour
     private void SpawnShark()
     {
         CreateShark();
-        Invoke("SpawnShark", 10f);
+        Invoke("SpawnShark", UnityEngine.Random.Range(10, 20));
     }
 
     private void SpawnSalmon()
     {
         CreateSalmon();
-        Invoke("SpawnSalmon", 1.5f);
+        Invoke("SpawnSalmon", 1f);
     }
 
     private void SpawnPuffer()

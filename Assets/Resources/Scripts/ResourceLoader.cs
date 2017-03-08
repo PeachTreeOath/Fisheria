@@ -14,6 +14,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject sharkObj;
     public GameObject salmonObj;
     public GameObject pufferObj;
+    public GameObject jellyfishObj;
+    public GameObject lobsterObj;
+    public GameObject whaleObj;
 
     public GameObject scoreBlockObj;
 
@@ -32,6 +35,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
         sharkObj = Resources.Load<GameObject>("Prefabs/Fish/Shark");
         salmonObj = Resources.Load<GameObject>("Prefabs/Fish/Salmon");
         pufferObj = Resources.Load<GameObject>("Prefabs/Fish/Puffer");
+        jellyfishObj = Resources.Load<GameObject>("Prefabs/Fish/Jellyfish");
+        lobsterObj = Resources.Load<GameObject>("Prefabs/Fish/Lobster");
+        whaleObj = Resources.Load<GameObject>("Prefabs/Fish/Whale");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
     }
