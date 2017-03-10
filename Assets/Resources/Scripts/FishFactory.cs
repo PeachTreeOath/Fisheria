@@ -7,6 +7,7 @@ public class FishFactory : MonoBehaviour
 
     private ResourceLoader loader;
     private float xLimit = 12;
+    private float closeXLimit = 10;
 
     // Use this for initialization
     void Start()
@@ -22,7 +23,13 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnPuffer", 0);
         Invoke("SpawnPuffer", 0);
         Invoke("SpawnPuffer", 0);
-
+        Invoke("SpawnJellyfish", 0);
+        Invoke("SpawnLobster", 0);
+        Invoke("SpawnLobster", 0);
+        Invoke("SpawnLobster", 0);
+        Invoke("SpawnLobster", 0);
+        Invoke("SpawnLobster", 0);
+        Invoke("SpawnWhale", 0);
     }
 
     private int GetDirectionMultiplier(int direction)
@@ -68,6 +75,24 @@ public class FishFactory : MonoBehaviour
     private void SpawnPuffer()
     {
         CreatePuffer();
+    }
+
+    private void SpawnJellyfish()
+    {
+        CreateJellyfish();
+        // Invoke("SpawnJellyfish", 1f);
+    }
+
+    private void SpawnLobster()
+    {
+        CreateLobster();
+           //Invoke("SpawnLobster", 10f);
+    }
+
+    private void SpawnWhale()
+    {
+        CreateWhale();
+        //   Invoke("SpawnWhale", UnityEngine.Random.Range(10, 20));
     }
 
     private BassController CreateBass()
@@ -168,5 +193,38 @@ public class FishFactory : MonoBehaviour
         puffer.type = FishType.PUFFER;
 
         return puffer;
+    }
+
+    private JellyfishController CreateJellyfish()
+    {
+        JellyfishController jellyfish = (Instantiate<GameObject>(loader.jellyfishObj)).GetComponent<JellyfishController>();
+        int direction = Random.Range(0, 2);
+        float yValue = Random.Range(jellyfish.bottomRightBound.y, jellyfish.topLeftBound.y);
+        jellyfish.Spawn(new Vector2(closeXLimit * GetDirectionMultiplier(direction), yValue));
+        jellyfish.type = FishType.JELLYFISH;
+
+        return jellyfish;
+    }
+
+    private LobsterController CreateLobster()
+    {
+        LobsterController lobster = (Instantiate<GameObject>(loader.lobsterObj)).GetComponent<LobsterController>();
+        int direction = Random.Range(0, 2);
+        float yValue = Random.Range(lobster.bottomRightBound.y, lobster.topLeftBound.y);
+        lobster.Spawn(new Vector2(closeXLimit * GetDirectionMultiplier(direction), yValue));
+        lobster.type = FishType.LOBSTER;
+
+        return lobster;
+    }
+
+    private WhaleController CreateWhale()
+    {
+        WhaleController whale = (Instantiate<GameObject>(loader.whaleObj)).GetComponent<WhaleController>();
+        int direction = Random.Range(0, 2);
+        float yValue = 1.5f;
+        whale.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue), direction == 1);
+        whale.type = FishType.WHALE;
+
+        return whale;
     }
 }

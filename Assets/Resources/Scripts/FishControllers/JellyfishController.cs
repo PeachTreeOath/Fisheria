@@ -44,7 +44,7 @@ public class JellyfishController : FishController
     // Sine interpolation for squid-like easing movement
     private Vector2 Sinerp(Vector2 start, Vector2 end, float value)
     {
-        return Vector2.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.5f));
+        return Vector2.Lerp(start, end, Mathf.Sin(value * Mathf.PI * 0.25f));
     }
 
     private void ChooseNextLocation()
@@ -73,5 +73,10 @@ public class JellyfishController : FishController
             needLocation = false;
             elapsedTime = 0;
         }
+    }
+
+    public void Spawn(Vector2 position)
+    {
+        transform.position = position;
     }
 }

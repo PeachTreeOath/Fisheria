@@ -238,6 +238,9 @@ MonoBehaviour:
   sharkObj: {fileID: 0}
   salmonObj: {fileID: 0}
   pufferObj: {fileID: 0}
+  jellyfishObj: {fileID: 0}
+  lobsterObj: {fileID: 0}
+  whaleObj: {fileID: 0}
   scoreBlockObj: {fileID: 0}
 --- !u!1 &1256911030
 GameObject:

@@ -72,7 +72,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.17}
   serializedVersion: 2
@@ -90,8 +90,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   topLeftBound: {x: -8.1, y: 2.6}
   bottomRightBound: {x: 8.1, y: 0.25}
-  moveSpeed: 1
-  moveDistance: 4
+  moveSpeed: 0.5
+  moveDistance: 5
   moveDelay: 2
 --- !u!212 &212688750330386970
 SpriteRenderer:
