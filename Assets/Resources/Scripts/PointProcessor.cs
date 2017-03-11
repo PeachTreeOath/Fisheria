@@ -15,6 +15,9 @@ public class PointProcessor : Singleton<PointProcessor>
     public int tigerSharkValue;
     public int greatWhiteSharkValue;
     public int pufferValue;
+    public int jellyfishValue;
+    public int lobsterValue;
+    public int whaleValue;
 
     private Dictionary<int, int> troutValues;
     private Dictionary<int, int> troutCounts;
@@ -124,7 +127,12 @@ public class PointProcessor : Singleton<PointProcessor>
                 return GetSalmonValue(catchList, out count);
             case FishType.PUFFER:
                 return GetPufferValue(catchList, out count);
-
+            case FishType.JELLYFISH:
+                return GetJellyfishValue(catchList, out count);
+            case FishType.LOBSTER:
+                return GetLobsterValue(catchList, out count);
+            case FishType.WHALE:
+                return GetWhaleValue(catchList, out count);
         }
 
         count = 0;
@@ -159,6 +167,11 @@ public class PointProcessor : Singleton<PointProcessor>
     private int GetPufferValue(List<FishController> catchList, out int count)
     {
         return GetStandardValue(catchList, FishType.PUFFER, pufferValue, out count);
+    }
+
+    private int GetWhaleValue(List<FishController> catchList, out int count)
+    {
+        return GetStandardValue(catchList, FishType.WHALE, whaleValue, out count);
     }
 
     // Used for calculating simple fish count by value
@@ -199,5 +212,43 @@ public class PointProcessor : Singleton<PointProcessor>
         
         count = totalCount;
         return total;
+    }
+
+    private int GetJellyfishValue(List<FishController> catchList, out int count)
+    {
+        int total = 0;
+        int totalCount = 0;
+
+        foreach (FishController fish in catchList)
+        {
+            if (fish.type == FishType.JELLYFISH)
+            {
+                totalCount++;
+                total = jellyfishValue;
+            }
+        }
+
+        count = totalCount;
+        return total;
+    }
+
+    private int GetLobsterValue(List<FishController> catchList, out int count)
+    {
+        int total = 0;
+        int totalCount = 0;
+        int isPositive = -1;
+
+        foreach (FishController fish in catchList)
+        {
+            if (fish.type == FishType.LOBSTER)
+            {
+                total += lobsterValue;
+                totalCount++;
+                isPositive *= -1;
+            }
+        }
+
+        count = totalCount;
+        return total * isPositive;
     }
 }

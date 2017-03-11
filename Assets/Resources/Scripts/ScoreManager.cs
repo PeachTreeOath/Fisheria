@@ -188,6 +188,8 @@ public class ScoreManager : MonoBehaviour
         yPosition -= yPositionChange;
         totalValue += value;
 
+
+
         GameObject scoreBlock = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         scoreBlock.transform.position = new Vector2(xPosition, yPosition);
         scoreBlock.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);

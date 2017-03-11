@@ -496,6 +496,9 @@ MonoBehaviour:
   tigerSharkValue: 5
   greatWhiteSharkValue: 35
   pufferValue: -10
+  jellyfishValue: 75
+  lobsterValue: 20
+  whaleValue: -25
 --- !u!1 &923595616
 GameObject:
   m_ObjectHideFlags: 0
