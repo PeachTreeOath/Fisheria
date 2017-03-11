@@ -18,5 +18,9 @@ public class ScoreBlock : MonoBehaviour
         nameText.text = type.GetNameString();
         countText.text = "x" + count;
         valueText.text = "$" + value;
+        if (value < 0)
+        {
+            transform.Find("Canvas/Value").GetComponent<Text>().color = Color.red;
+        }
     }
 }

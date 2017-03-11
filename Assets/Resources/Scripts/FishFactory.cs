@@ -89,7 +89,7 @@ public class FishFactory : MonoBehaviour
     private void SpawnWhale()
     {
         CreateWhale();
-        Invoke("SpawnWhale", UnityEngine.Random.Range(10, 20));
+        Invoke("SpawnWhale", UnityEngine.Random.Range(7, 15));
     }
 
     private BassController CreateBass()

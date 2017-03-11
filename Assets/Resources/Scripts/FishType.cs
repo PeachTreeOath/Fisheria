@@ -45,6 +45,12 @@ public static class FishTypeExtensions
                 return "Salmon";
             case FishType.PUFFER:
                 return "Puffer";
+            case FishType.JELLYFISH:
+                return "Jellyfish";
+            case FishType.LOBSTER:
+                return "Lobster";
+            case FishType.WHALE:
+                return "Whale";
         }
 
         return "FAIL FISH";

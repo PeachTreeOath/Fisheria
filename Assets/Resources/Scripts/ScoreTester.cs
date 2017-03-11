@@ -43,6 +43,24 @@ public class ScoreTester : MonoBehaviour
             fish.type = FishType.PUFFER;
             catchList.Add(fish);
         }
+        for (int i = 0; i < 2; i++)
+        {
+            JellyfishController fish = (Instantiate<GameObject>(ResourceLoader.instance.jellyfishObj)).GetComponent<JellyfishController>();
+            fish.type = FishType.JELLYFISH;
+            catchList.Add(fish);
+        }
+        for (int i = 0; i < 3; i++)
+        {
+            LobsterController fish = (Instantiate<GameObject>(ResourceLoader.instance.lobsterObj)).GetComponent<LobsterController>();
+            fish.type = FishType.LOBSTER;
+            catchList.Add(fish);
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            WhaleController fish = (Instantiate<GameObject>(ResourceLoader.instance.whaleObj)).GetComponent<WhaleController>();
+            fish.type = FishType.WHALE;
+            catchList.Add(fish);
+        }
         StatsManager.instance.playerCatches.Add(1, catchList);
         StatsManager.instance.playerCatches.Add(2, catchList);
         StatsManager.instance.playerCatches.Add(3, catchList);

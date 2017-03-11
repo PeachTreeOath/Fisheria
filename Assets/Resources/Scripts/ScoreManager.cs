@@ -181,14 +181,23 @@ public class ScoreManager : MonoBehaviour
 
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.PUFFER, out count);
         GameObject block9 = CreateScoreBlock(value, count, FishType.PUFFER, xPosition, yPosition, playerNum);
-        if (value < 0)
-        {
-            block9.transform.Find("Canvas/Value").GetComponent<Text>().color = Color.red;
-        }
         yPosition -= yPositionChange;
         totalValue += value;
 
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.JELLYFISH, out count);
+        GameObject block10 = CreateScoreBlock(value, count, FishType.JELLYFISH, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
 
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.LOBSTER, out count);
+        GameObject block11 = CreateScoreBlock(value, count, FishType.LOBSTER, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
+
+        value = PointProcessor.instance.GetCatchValue(fishController, FishType.WHALE, out count);
+        GameObject block12 = CreateScoreBlock(value, count, FishType.WHALE, xPosition, yPosition, playerNum);
+        yPosition -= yPositionChange;
+        totalValue += value;
 
         GameObject scoreBlock = Instantiate<GameObject>(ResourceLoader.instance.scoreBlockObj);
         scoreBlock.transform.position = new Vector2(xPosition, yPosition);
@@ -208,6 +217,9 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block7);
         blocks[playerNum - 1].Enqueue(block8);
         blocks[playerNum - 1].Enqueue(block9);
+        blocks[playerNum - 1].Enqueue(block10);
+        blocks[playerNum - 1].Enqueue(block11);
+        blocks[playerNum - 1].Enqueue(block12);
         blocks[playerNum - 1].Enqueue(scoreBlock);
 
         //playerGear[player.playerNum - 1].gold += value;
