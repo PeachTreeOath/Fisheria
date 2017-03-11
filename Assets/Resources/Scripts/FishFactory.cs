@@ -26,9 +26,6 @@ public class FishFactory : MonoBehaviour
         Invoke("SpawnJellyfish", 0);
         Invoke("SpawnLobster", 0);
         Invoke("SpawnLobster", 0);
-        Invoke("SpawnLobster", 0);
-        Invoke("SpawnLobster", 0);
-        Invoke("SpawnLobster", 0);
         Invoke("SpawnWhale", 0);
     }
 
@@ -80,19 +77,19 @@ public class FishFactory : MonoBehaviour
     private void SpawnJellyfish()
     {
         CreateJellyfish();
-        // Invoke("SpawnJellyfish", 1f);
+        Invoke("SpawnJellyfish", 30f);
     }
 
     private void SpawnLobster()
     {
         CreateLobster();
-           //Invoke("SpawnLobster", 10f);
+        Invoke("SpawnLobster", UnityEngine.Random.Range(5, 15));
     }
 
     private void SpawnWhale()
     {
         CreateWhale();
-        //   Invoke("SpawnWhale", UnityEngine.Random.Range(10, 20));
+        Invoke("SpawnWhale", UnityEngine.Random.Range(10, 20));
     }
 
     private BassController CreateBass()
@@ -176,8 +173,11 @@ public class FishFactory : MonoBehaviour
         int direction = Random.Range(0, 2);
         float speed = UnityEngine.Random.Range(1f, 3f);
 
+        float destYValue = Random.Range(-2.75f, -0.25f);
+
         SalmonController salmon = (Instantiate<GameObject>(loader.salmonObj)).GetComponent<SalmonController>();
-        salmon.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue), direction == 1);
+        salmon.Spawn(new Vector2(xLimit * GetDirectionMultiplier(direction), yValue));
+        salmon.SetTarget(new Vector2(-xLimit * GetDirectionMultiplier(direction), destYValue));
         salmon.SetSpeed(speed);
         salmon.type = FishType.SALMON;
 

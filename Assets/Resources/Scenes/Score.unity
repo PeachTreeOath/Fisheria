@@ -496,7 +496,7 @@ MonoBehaviour:
   tigerSharkValue: 5
   greatWhiteSharkValue: 35
   pufferValue: -10
-  jellyfishValue: 75
+  jellyfishValue: 100
   lobsterValue: 20
   whaleValue: -25
 --- !u!1 &923595616

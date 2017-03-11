@@ -6,7 +6,7 @@ using UnityEngine;
 public class WhaleController : FishController
 {
 
-    private float moveSpeed = 1f;
+    private float moveSpeed = .75f;
     
     // Update is called once per frame
     void Update()

@@ -72,6 +72,8 @@ public class JellyfishController : FishController
             nextLocation = newLoc;
             needLocation = false;
             elapsedTime = 0;
+            transform.rotation = transform.position.GetRotationAngleTowardsTarget(nextLocation);
+            transform.Rotate(Vector3.forward, 90);
         }
     }
 
