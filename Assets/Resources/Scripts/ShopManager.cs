@@ -8,6 +8,7 @@ public class ShopManager : MonoBehaviour
 {
 
     public int playerNum;
+    public int gold;
 
     private Cursor cursor;
     private Text titleText;
@@ -25,6 +26,9 @@ public class ShopManager : MonoBehaviour
         costText = scorePanel.transform.Find("ItemCanvas").Find("Cost").GetComponent<Text>();
 
         cursor.SetManager(this);
+
+        // Load gold
+        gold = StatsManager.instance.playerGear[playerNum - 1].gold;
     }
 
     // Update is called once per frame
@@ -49,8 +53,12 @@ public class ShopManager : MonoBehaviour
 
     public void ProcessButton(ItemInfo item)
     {
+        Debug.Log(item.title);
         if (item.title.Equals("Ready"))
         {
+            // Save gold
+            StatsManager.instance.playerGear[playerNum - 1].gold = gold;
+
             //TODO: Check for all ready
             SceneTransitionManager.instance.GoToGame();
         }
