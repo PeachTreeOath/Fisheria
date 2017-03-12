@@ -26,7 +26,7 @@ public class ShopManager : MonoBehaviour
         titleText = scorePanel.transform.Find("ItemCanvas").Find("Title").GetComponent<Text>();
         descText = scorePanel.transform.Find("ItemCanvas").Find("Description").GetComponent<Text>();
         costText = scorePanel.transform.Find("ItemCanvas").Find("Cost").GetComponent<Text>();
-        goldText= scorePanel.transform.Find("Canvas").Find("GoldText").GetComponent<Text>();
+        goldText = scorePanel.transform.Find("Canvas").Find("GoldText").GetComponent<Text>();
 
         cursor.SetManager(this);
 
@@ -84,6 +84,8 @@ public class ShopManager : MonoBehaviour
             {
                 gear.resetLevel = item.title[4] - '0';
             }
+
+            UpdateGold(gold - item.cost);
         }
     }
 
@@ -91,5 +93,11 @@ public class ShopManager : MonoBehaviour
     {
         gold = newGold;
         goldText.text = "$" + gold;
+        UpdateAvailableGear();
+    }
+
+    private void UpdateAvailableGear()
+    {
+
     }
 }
