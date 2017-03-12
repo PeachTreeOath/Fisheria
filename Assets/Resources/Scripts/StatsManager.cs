@@ -16,6 +16,8 @@ public class StatsManager : Singleton<StatsManager>
     public FishermanGear[] playerGear;
     public Dictionary<int, List<FishController>> playerCatches;
 
+    public int debugGold;
+
     // Use this for initialization
     protected override void Awake()
     {
@@ -26,6 +28,14 @@ public class StatsManager : Singleton<StatsManager>
         for (int i = 0; i < numPlayers; i++)
         {
             playerGear[i] = new FishermanGear();
+        }
+
+        if(debugGold != 0)
+        {
+            for (int i = 0; i < numPlayers; i++)
+            {
+                playerGear[i].gold = debugGold;
+            }
         }
     }
 }

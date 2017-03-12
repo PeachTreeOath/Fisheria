@@ -218,6 +218,7 @@ MonoBehaviour:
   p4JoyMap: 
   numRound: 0
   numPlayers: 4
+  debugGold: 1000
 --- !u!114 &326200226
 MonoBehaviour:
   m_ObjectHideFlags: 0

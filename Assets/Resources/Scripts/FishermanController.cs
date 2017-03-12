@@ -13,10 +13,10 @@ public class FishermanController : MonoBehaviour
     private CastState castState;
 
     // Stats
-    private int castSpeedLevel;
-    private int rangeLevel;
-    private int maneuverSpeedLevel;
-    private int resetLevel;
+    public int castSpeedLevel;
+    public int rangeLevel;
+    public int maneuverSpeedLevel;
+    public int resetLevel;
     public int debugSpeedLevel;
     public int debugRangeLevel;
     public int debugRodLevel;

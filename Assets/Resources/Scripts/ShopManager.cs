@@ -14,6 +14,8 @@ public class ShopManager : MonoBehaviour
     private Text titleText;
     private Text descText;
     private Text costText;
+    private Text goldText;
+    private FishermanGear gear;
 
     // Use this for initialization
     void Start()
@@ -24,17 +26,14 @@ public class ShopManager : MonoBehaviour
         titleText = scorePanel.transform.Find("ItemCanvas").Find("Title").GetComponent<Text>();
         descText = scorePanel.transform.Find("ItemCanvas").Find("Description").GetComponent<Text>();
         costText = scorePanel.transform.Find("ItemCanvas").Find("Cost").GetComponent<Text>();
+        goldText= scorePanel.transform.Find("Canvas").Find("GoldText").GetComponent<Text>();
 
         cursor.SetManager(this);
 
         // Load gold
-        gold = StatsManager.instance.playerGear[playerNum - 1].gold;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        gear = StatsManager.instance.playerGear[playerNum - 1];
+        gold = gear.gold;
+        UpdateGold(gold);
     }
 
     public void UpdateUI(ItemInfo item)
@@ -53,14 +52,44 @@ public class ShopManager : MonoBehaviour
 
     public void ProcessButton(ItemInfo item)
     {
-        Debug.Log(item.title);
+        if(gold < item.cost)
+        {
+            //TODO: play error sound
+            return;
+        }
+
         if (item.title.Equals("Ready"))
         {
             // Save gold
-            StatsManager.instance.playerGear[playerNum - 1].gold = gold;
+            gear.gold = gold;
 
             //TODO: Check for all ready
             SceneTransitionManager.instance.GoToGame();
         }
+        else
+        {
+            if(item.title.StartsWith("Rod"))
+            {
+                gear.rangeLevel = item.title[4] - '0';
+            }
+            else if (item.title.StartsWith("Boots"))
+            {
+                gear.castSpeedLevel = item.title[6] - '0';
+            }
+            else if (item.title.StartsWith("Gloves"))
+            {
+                gear.maneuverSpeedLevel = item.title[7] - '0';
+            }
+            else if (item.title.StartsWith("Hat"))
+            {
+                gear.resetLevel = item.title[4] - '0';
+            }
+        }
+    }
+
+    private void UpdateGold(int newGold)
+    {
+        gold = newGold;
+        goldText.text = "$" + gold;
     }
 }
