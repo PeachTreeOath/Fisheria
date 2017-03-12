@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 114401491368876210}
   - component: {fileID: 114911622061671336}
   - component: {fileID: 114438992949879330}
+  - component: {fileID: 114022185126405634}
   m_Layer: 0
   m_Name: ReadyCanvas
   m_TagString: Untagged
@@ -1355,8 +1356,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 1
-  desc: Hook maneuverability
+  desc: Hook speed
   cost: 10
+--- !u!114 &114022185126405634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1397176526799162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb155f72e7ba97e4a9cc3204430fcd5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Ready
+  desc: Ready for next round
+  cost: 0
 --- !u!114 &114024532882109216
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1370,6 +1385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerNum: 1
   cursorThreshold: 0.1
+  allowInputs: 0
 --- !u!114 &114026946333015312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1382,7 +1398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 3
-  desc: Hook maneuverability
+  desc: Hook speed
   cost: 10
 --- !u!114 &114102235827497166
 MonoBehaviour:
@@ -1411,7 +1427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 3
-  desc: Hook speed
+  desc: Hook maneuverability
   cost: 10
 --- !u!114 &114140273132094852
 MonoBehaviour:
@@ -1425,7 +1441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 2
-  desc: Hook maneuverability
+  desc: Hook speed
   cost: 10
 --- !u!114 &114150481228279446
 MonoBehaviour:
@@ -1439,7 +1455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 2
-  desc: Hook speed
+  desc: Hook maneuverability
   cost: 10
 --- !u!114 &114190985161657628
 MonoBehaviour:
@@ -1500,7 +1516,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 4
-  desc: Hook speed
+  desc: Hook maneuverability
   cost: 10
 --- !u!114 &114251424485635124
 MonoBehaviour:
@@ -1513,7 +1529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e6e3b5442e2984cbd32c4194edb5c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNum: 2
+  playerNum: 1
+  gold: 0
 --- !u!114 &114284118123782120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1618,7 +1635,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 1
-  desc: Hook speed
+  desc: Hook maneuverability
   cost: 10
 --- !u!114 &114366930751261572
 MonoBehaviour:
@@ -2009,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 4
-  desc: Hook maneuverability
+  desc: Hook speed
   cost: 10
 --- !u!114 &114716126352512460
 MonoBehaviour:

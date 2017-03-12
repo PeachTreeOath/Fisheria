@@ -13,10 +13,14 @@ public class FishermanController : MonoBehaviour
     private CastState castState;
 
     // Stats
-    private int speedLevel;
+    private int castSpeedLevel;
     private int rangeLevel;
-    private int rodLevel;
+    private int maneuverSpeedLevel;
     private int resetLevel;
+    public int debugSpeedLevel;
+    public int debugRangeLevel;
+    public int debugRodLevel;
+    public int debugResetLevel;
 
     // Components
     private RodController rod;
@@ -31,6 +35,7 @@ public class FishermanController : MonoBehaviour
     private float resetSpeed;
     private float resetElapsedTime;
     private int numPearls;
+    private bool pearlCaughtThisCatch;
 
     // Use this for initialization
     void Start()
@@ -53,12 +58,12 @@ public class FishermanController : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal" + playerNum) < 0)
             {
-                float newX = Mathf.Clamp(transform.position.x - ((speedBase + (speedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
+                float newX = Mathf.Clamp(transform.position.x - ((speedBase + (castSpeedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
             else if (Input.GetAxis("Horizontal" + playerNum) > 0)
             {
-                float newX = Mathf.Clamp(transform.position.x + ((speedBase + (speedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
+                float newX = Mathf.Clamp(transform.position.x + ((speedBase + (castSpeedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
 
@@ -106,13 +111,29 @@ public class FishermanController : MonoBehaviour
     private void InitStats()
     {
         FishermanGear gear = StatsManager.instance.playerGear[playerNum - 1];
-        //TODO temp testing powerup
-        speedLevel = gear.speedLevel + 1;
-        rangeLevel = gear.rangeLevel + 1;
-        rodLevel = gear.rodLevel + 1;
-        resetLevel = gear.resetLevel + 1;
 
-        resetSpeed = 2 - resetLevel * 0.5f;
+        castSpeedLevel = gear.castSpeedLevel;
+        rangeLevel = gear.rangeLevel;
+        maneuverSpeedLevel = gear.maneuverSpeedLevel;
+        resetLevel = gear.resetLevel;
+
+        if (debugSpeedLevel != 0)
+        {
+            castSpeedLevel = debugSpeedLevel;
+        }
+        if (debugRangeLevel != 0)
+        {
+            rangeLevel = debugRangeLevel;
+        }
+        if (debugRodLevel != 0)
+        {
+            maneuverSpeedLevel = debugRodLevel;
+        }
+        if (debugResetLevel != 0)
+        {
+            resetLevel = debugResetLevel;
+        }
+        resetSpeed = 4 - resetLevel * 0.75f;
     }
 
     private void AimRod()
@@ -124,7 +145,7 @@ public class FishermanController : MonoBehaviour
     private void CastRod()
     {
         castState = CastState.CASTING;
-        hook.CastHook(speedLevel, rangeLevel, rodLevel);
+        hook.CastHook(maneuverSpeedLevel, castSpeedLevel, rangeLevel);
     }
 
     // Callback when hook returns back to player empty
@@ -140,7 +161,7 @@ public class FishermanController : MonoBehaviour
         }
         pearlCaughtThisCatch = false;
     }
-    private bool pearlCaughtThisCatch;
+
     // Callback when hook returns back to player with a fish
     public void CaughtFish(FishController fish)
     {

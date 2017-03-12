@@ -134,33 +134,9 @@ Prefab:
       propertyPath: m_Name
       value: ScorePanel1
       objectReference: {fileID: 0}
-    - target: {fileID: 114251424485635124, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: playerNum
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c41fe3ff8e271c049a628c5ad1b1ea83, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &99460034 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1397176526799162, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-    type: 2}
-  m_PrefabInternal: {fileID: 42709849}
---- !u!114 &99460035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 99460034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb155f72e7ba97e4a9cc3204430fcd5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Ready
-  desc: Ready for next round
-  cost: 0
 --- !u!1001 &122140815
 Prefab:
   m_ObjectHideFlags: 0

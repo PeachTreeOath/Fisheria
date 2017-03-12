@@ -8,7 +8,7 @@ using UnityEngine;
 public class HookController : MonoBehaviour
 {
 
-    private float moveSpeed;
+    private float angleMoveSpeed;
     private float lineSpeed;
     private float yLimit;
     private float xLimit = 8.5f;
@@ -70,11 +70,11 @@ public class HookController : MonoBehaviour
         this.catchCb = catchCb;
     }
 
-    public void CastHook(int speedLevel, int rodLevel, int rangeLevel)
+    public void CastHook(int maneuverSpeedLevel, int castSpeedLevel, int rangeLevel)
     {
         boxCollider.enabled = true;
         sprite.enabled = true;
-        SetVars(speedLevel, rodLevel, rangeLevel);
+        SetVars(maneuverSpeedLevel, castSpeedLevel, rangeLevel);
         castState = CastState.CASTING;
         origPos = transform.position;
         transform.localRotation = origRotation;
@@ -101,15 +101,15 @@ public class HookController : MonoBehaviour
     {
         if (castState == CastState.CASTING)
         {
-            float angle = -direction * moveSpeed * Time.deltaTime;
+            float angle = -direction * angleMoveSpeed * Time.deltaTime;
             transform.Rotate(Vector3.forward, angle);
         }
     }
 
-    private void SetVars(int speedLevel, int rodLevel, int rangeLevel)
+    private void SetVars(int maneuverSpeedLevel, int castSpeedLevel, int rangeLevel)
     {
-        moveSpeed = speedLevel * 8;
-        lineSpeed = 0 + rodLevel * 1;
+        angleMoveSpeed = maneuverSpeedLevel * 8;
+        lineSpeed = 0 + castSpeedLevel * .75f;
         yLimit = -6f + rangeLevel * 3f;
     }
 

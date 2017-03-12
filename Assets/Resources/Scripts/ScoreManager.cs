@@ -12,8 +12,8 @@ public class ScoreManager : MonoBehaviour
     private bool finishedRevealing = false;
     private float revealRate = 0.5f;
     private float revealElapsedTime;
-    private float startingYPosition = 3.9f;
-    private float yPositionChange = 0.65f;
+    private float startingYPosition = 4f;
+    private float yPositionChange = 0.52f;
 
     private List<Queue<GameObject>> blocks;
     private bool[] activatedShops;
