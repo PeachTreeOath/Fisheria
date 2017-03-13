@@ -101,6 +101,7 @@ public class HookController : MonoBehaviour
     {
         if (castState == CastState.CASTING)
         {
+            //TODO: Limit rotation to 45 deg angles
             float angle = -direction * angleMoveSpeed * Time.deltaTime;
             transform.Rotate(Vector3.forward, angle);
         }

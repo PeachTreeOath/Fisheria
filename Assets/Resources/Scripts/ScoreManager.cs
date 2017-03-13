@@ -159,6 +159,7 @@ public class ScoreManager : MonoBehaviour
         yPosition -= yPositionChange;
         totalValue += value;
 
+        //TODO: Calculate this correctly or get rid of it
         value = PointProcessor.instance.GetCatchValue(fishController, FishType.OYSTER, out count);
         GameObject block5 = CreateScoreBlock(value, count, FishType.OYSTER, xPosition, yPosition, playerNum);
         yPosition -= yPositionChange;
