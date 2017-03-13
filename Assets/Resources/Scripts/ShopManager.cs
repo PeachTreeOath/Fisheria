@@ -52,7 +52,7 @@ public class ShopManager : MonoBehaviour
 
     public void ProcessButton(ItemInfo item)
     {
-        if(gold < item.cost)
+        if (gold < item.cost)
         {
             //TODO: play error sound
             return;
@@ -68,24 +68,58 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            if(item.title.StartsWith("Rod"))
+            if (item.title.StartsWith("Rod"))
             {
-                gear.rangeLevel = item.title[4] - '0';
+                int level = item.title[4] - '0';
+                if (!gear.purchaseHistory[0, level - 1])
+                {
+                    if (level > gear.rangeLevel)
+                    {
+                        gear.rangeLevel = level;
+                    }
+                    gear.purchaseHistory[0, level - 1] = true;
+                    UpdateGold(gold - item.cost);
+                }
             }
             else if (item.title.StartsWith("Boots"))
             {
-                gear.castSpeedLevel = item.title[6] - '0';
+                int level = item.title[6] - '0';
+                if (!gear.purchaseHistory[1, level - 1])
+                {
+                    if (level > gear.castSpeedLevel)
+                    {
+                        gear.castSpeedLevel = level;
+                    }
+                    gear.purchaseHistory[1, level - 1] = true;
+                    UpdateGold(gold - item.cost);
+                }
             }
             else if (item.title.StartsWith("Gloves"))
             {
-                gear.maneuverSpeedLevel = item.title[7] - '0';
+                int level = item.title[7] - '0';
+                if (!gear.purchaseHistory[2, level - 1])
+                {
+                    if (level > gear.maneuverSpeedLevel)
+                    {
+                        gear.maneuverSpeedLevel = level;
+                    }
+                    gear.purchaseHistory[2, level - 1] = true;
+                    UpdateGold(gold - item.cost);
+                }
             }
             else if (item.title.StartsWith("Hat"))
             {
-                gear.resetLevel = item.title[4] - '0';
+                int level = item.title[4] - '0';
+                if (!gear.purchaseHistory[3, level - 1])
+                {
+                    if (level > gear.resetLevel)
+                    {
+                        gear.resetLevel = level;
+                    }
+                    gear.purchaseHistory[3, level - 1] = true;
+                    UpdateGold(gold - item.cost);
+                }
             }
-
-            UpdateGold(gold - item.cost);
         }
     }
 
@@ -98,6 +132,24 @@ public class ShopManager : MonoBehaviour
 
     private void UpdateAvailableGear()
     {
+        for (int i = 0; i < 4; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                Transform item = transform.Find("itemBorder" + i + "" + j);
 
+                // Put checkmark for already purchased gear
+                if (gear.purchaseHistory[i, j])
+                {
+                    item.Find("itemCheck").GetComponent<SpriteRenderer>().enabled = true;
+                    item.Find("itemCover").GetComponent<SpriteRenderer>().enabled = true;
+                }
+
+                if (gold < item.GetComponent<ItemInfo>().cost)
+                {
+                    item.Find("itemCover").GetComponent<SpriteRenderer>().enabled = true;
+                }
+            }
+        }
     }
 }

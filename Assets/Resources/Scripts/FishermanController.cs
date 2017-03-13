@@ -133,7 +133,7 @@ public class FishermanController : MonoBehaviour
         {
             resetLevel = debugResetLevel;
         }
-        resetSpeed = 4 - resetLevel * 0.75f;
+        resetSpeed = 4 - resetLevel * 1f;
     }
 
     private void AimRod()
