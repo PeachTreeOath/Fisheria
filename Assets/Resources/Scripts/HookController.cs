@@ -54,6 +54,7 @@ public class HookController : MonoBehaviour
         }
         else if (castState == CastState.REELING)
         {
+            // TODO: Cap reel speed at set rate unless whale
             Vector2 moveVector = vectorDiff * lineSpeed * Time.deltaTime;
             transform.position += new Vector3(moveVector.x, moveVector.y, 0);
             hookedObject.transform.position = transform.position;

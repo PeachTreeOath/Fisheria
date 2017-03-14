@@ -2333,7 +2333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 1
-  desc: Hook maneuverability
+  desc: Low hook maneuverability
   cost: 0
 --- !u!114 &114022185126405634
 MonoBehaviour:
@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 3
-  desc: Hook maneuverability
+  desc: High hook maneuverability
   cost: 300
 --- !u!114 &114102235827497166
 MonoBehaviour:
@@ -2404,7 +2404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 3
-  desc: Hook speed
+  desc: 9 kph line speed
   cost: 200
 --- !u!114 &114140273132094852
 MonoBehaviour:
@@ -2418,7 +2418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 2
-  desc: Hook maneuverability
+  desc: Medium hook maneuverability
   cost: 100
 --- !u!114 &114150481228279446
 MonoBehaviour:
@@ -2432,7 +2432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 2
-  desc: Hook speed
+  desc: 6 kph line speed
   cost: 50
 --- !u!114 &114190985161657628
 MonoBehaviour:
@@ -2446,7 +2446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Hat 4
-  desc: Reload speed
+  desc: 0 sec reload speed
   cost: 200
 --- !u!114 &114217274533220908
 MonoBehaviour:
@@ -2493,7 +2493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 4
-  desc: Hook speed
+  desc: 12 kph line speed
   cost: 500
 --- !u!114 &114251424485635124
 MonoBehaviour:
@@ -2568,7 +2568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Hat 3
-  desc: Reload speed
+  desc: 1 sec reload speed
   cost: 100
 --- !u!114 &114319164055544366
 MonoBehaviour:
@@ -2612,7 +2612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Boots 1
-  desc: Hook speed
+  desc: 3 kph line speed
   cost: 0
 --- !u!114 &114366930751261572
 MonoBehaviour:
@@ -2695,7 +2695,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Rod 4
-  desc: Casting range
+  desc: Access Zone 4
   cost: 750
 --- !u!114 &114427512176937066
 MonoBehaviour:
@@ -2820,7 +2820,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $1000
+  m_Text: 
 --- !u!114 &114551965262592102
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2908,7 +2908,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Rod 2
-  desc: Casting range
+  desc: Access Zone 2
   cost: 100
 --- !u!114 &114653428586846944
 MonoBehaviour:
@@ -2986,7 +2986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Rod 3
-  desc: Casting range
+  desc: Access Zone 3
   cost: 300
 --- !u!114 &114665621868653276
 MonoBehaviour:
@@ -3036,7 +3036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Gloves 4
-  desc: Hook maneuverability
+  desc: Max hook maneuverability
   cost: 750
 --- !u!114 &114716126352512460
 MonoBehaviour:
@@ -3098,7 +3098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Hat 1
-  desc: Reload speed
+  desc: 3 sec reload speed
   cost: 0
 --- !u!114 &114878022041233058
 MonoBehaviour:
@@ -3112,7 +3112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Hat 2
-  desc: Reload speed
+  desc: 2 sec reload speed
   cost: 50
 --- !u!114 &114892955043313498
 MonoBehaviour:
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   title: Rod 1
-  desc: Casting range
+  desc: Access Zone 1
   cost: 0
 --- !u!212 &212013576730027918
 SpriteRenderer:
@@ -5727,8 +5727,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.000011444092, y: -141}
-  m_SizeDelta: {x: 675, y: 120}
+  m_AnchoredPosition: {x: 0.000011444092, y: -165}
+  m_SizeDelta: {x: 675, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224631502244007598
 RectTransform:

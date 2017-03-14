@@ -119,6 +119,8 @@ public class PointProcessor : Singleton<PointProcessor>
                 return GetBlueBassValue(catchList, out count);
             case FishType.RED_BASS:
                 return GetRedBassValue(catchList, out count);
+            case FishType.OYSTER:
+                return GetOysterValue(catchList, out count);
             case FishType.TIGER_SHARK:
                 return GetTigerSharkValue(catchList, out count);
             case FishType.GREAT_WHITE_SHARK:
@@ -152,6 +154,11 @@ public class PointProcessor : Singleton<PointProcessor>
     private int GetRedBassValue(List<FishController> catchList, out int count)
     {
         return GetStandardValue(catchList, FishType.RED_BASS, redBassValue, out count);
+    }
+
+    private int GetOysterValue(List<FishController> catchList, out int count)
+    {
+        return GetStandardValue(catchList, FishType.OYSTER, 0, out count);
     }
 
     private int GetTigerSharkValue(List<FishController> catchList, out int count)

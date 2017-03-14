@@ -207,6 +207,10 @@ public class ScoreManager : MonoBehaviour
         totalBlock.nameText.text = "Total";
         totalBlock.countText.text = " ";
         totalBlock.valueText.text = "$" + totalValue;
+        if (totalValue < 0)
+        {
+            scoreBlock.transform.Find("Canvas/Value").GetComponent<Text>().color = Color.red;
+        }
         yPosition -= yPositionChange;
 
         blocks[playerNum - 1].Enqueue(block1);
@@ -223,7 +227,12 @@ public class ScoreManager : MonoBehaviour
         blocks[playerNum - 1].Enqueue(block12);
         blocks[playerNum - 1].Enqueue(scoreBlock);
 
-        //playerGear[player.playerNum - 1].gold += value;
+        FishermanGear gear = StatsManager.instance.playerGear[playerNum - 1];
+        gear.gold += totalValue;
+        if(gear.gold < 0)
+        {
+            gear.gold = 0;
+        }
     }
 
     private GameObject CreateScoreBlock(int value, int count, FishType type, float xPosition, float yPosition, int playerNum)
@@ -234,12 +243,6 @@ public class ScoreManager : MonoBehaviour
         block.transform.SetParent(GameObject.Find("ScorePanel" + playerNum).transform);
 
         return block;
-    }
-
-    public void UpdateScores()
-    {
-        int gold = StatsManager.instance.playerGear[0].gold;
-        //scoreText.text = "GOLD: " + gold;
     }
 
 }
