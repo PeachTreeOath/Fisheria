@@ -24,6 +24,7 @@ public class GameManager : Singleton<GameManager>
     {
         StatsManager.instance.numRound++;
         AudioManager.instance.PlayMusic("daytime", 1);
+        //TODO: Create nighttime round
     }
 
     // Update is called once per frame
@@ -54,6 +55,8 @@ public class GameManager : Singleton<GameManager>
         {
             StatsManager.instance.playerCatches[player.playerNum] = player.catchList;
         }
+
+        //TODO: Figure out why fishes carry over to score screen in deployed version
 
         SceneTransitionManager.instance.GoToScore();
     }
