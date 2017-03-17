@@ -75,9 +75,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0.03, y: -0.05}
+  m_Offset: {x: 0, y: -0.07}
   serializedVersion: 2
-  m_Radius: 0.09
+  m_Radius: 0.12
 --- !u!70 &70460755265476326
 CapsuleCollider2D:
   m_ObjectHideFlags: 1
@@ -90,7 +90,7 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: -0.1}
-  m_Size: {x: 0.41, y: 0.31}
+  m_Size: {x: 0.56, y: 0.31}
   m_Direction: 1
 --- !u!114 &114782227711070072
 MonoBehaviour:
@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ed59a548667ce4994c587baab3acf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openSprite: {fileID: 21300000, guid: 2e1a2745c488eeb48ba375357c2f300f, type: 3}
-  closedSprite: {fileID: 21300000, guid: 43f1427a38a1b484e8bde455e8444a7b, type: 3}
+  openSprite: {fileID: 21300000, guid: 263822f2fee40e54791f538989678c67, type: 3}
+  closedSprite: {fileID: 21300000, guid: 1ffff1af8fdfc5a49a589701c3350c96, type: 3}
   minOpenTime: 5
   maxOpenTime: 20
 --- !u!212 &212294852315063124
@@ -138,7 +138,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43f1427a38a1b484e8bde455e8444a7b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ffff1af8fdfc5a49a589701c3350c96, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
