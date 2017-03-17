@@ -37,6 +37,8 @@ public class OysterController : FishController
     // Update is called once per frame
     void Update()
     {
+        if (hooked) return;
+
         if (!isOpen)
         {
             elapsedTime += Time.deltaTime;

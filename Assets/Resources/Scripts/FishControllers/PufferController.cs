@@ -10,7 +10,7 @@ public class PufferController : FishController
     public Vector2 bottomRightBound;
 
     private float moveSpeed = 0.5f;
-        private bool isPuffed = true;
+    private bool isPuffed = true;
     private Vector2 nextLocation;
     private GameObject nonPuffObj;
     private GameObject puffObj;
@@ -30,6 +30,8 @@ public class PufferController : FishController
     // Update is called once per frame
     void Update()
     {
+        if (hooked) return;
+
         float step = moveSpeed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, nextLocation, step);
 

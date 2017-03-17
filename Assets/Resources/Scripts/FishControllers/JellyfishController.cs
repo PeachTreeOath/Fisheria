@@ -26,6 +26,8 @@ public class JellyfishController : FishController
     // Update is called once per frame
     void Update()
     {
+        if (hooked) return;
+
         if (needLocation)
         {
             ChooseNextLocation();

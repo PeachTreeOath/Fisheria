@@ -17,10 +17,7 @@ public class FishController : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
     {
-        if(hooked)
-        {
-            return;
-        }
+        if (hooked) return;
 
         HookController hook = col.gameObject.GetComponent<HookController>();
 

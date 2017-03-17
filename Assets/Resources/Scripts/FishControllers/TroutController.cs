@@ -12,6 +12,8 @@ public class TroutController : FishController
     // Update is called once per frame
     void Update()
     {
+        if (hooked) return;
+
         elapsedTime += Time.deltaTime;
         float rotAngle = Mathf.Sin(elapsedTime) / 4;
         transform.Rotate(Vector3.forward, rotAngle);

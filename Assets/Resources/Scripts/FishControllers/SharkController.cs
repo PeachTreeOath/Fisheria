@@ -11,6 +11,8 @@ public class SharkController : FishController
     // Update is called once per frame
     void Update()
     {
+        if (hooked) return;
+
         transform.position += transform.up * moveSpeed * Time.deltaTime;
     }
 
