@@ -59,7 +59,7 @@ public class OysterController : FishController
 
     protected override void OnTriggerEnter2D(Collider2D col)
     {
-        if(isOpen)
+        if (isOpen)
         {
             base.OnTriggerEnter2D(col);
         }

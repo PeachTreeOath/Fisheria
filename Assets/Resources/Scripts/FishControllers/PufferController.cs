@@ -33,6 +33,10 @@ public class PufferController : FishController
         if (hooked) return;
 
         float step = moveSpeed * Time.deltaTime;
+        if(isPuffed)
+        {
+            step /= 2;
+        }
         transform.position = Vector2.MoveTowards(transform.position, nextLocation, step);
 
         if (Vector2.Distance(transform.position, nextLocation) < 0.1f)
