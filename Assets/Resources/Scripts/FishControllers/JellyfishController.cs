@@ -17,10 +17,15 @@ public class JellyfishController : FishController
     private bool needLocation = true;
     private float elapsedTime;
 
+    public AnimationClip clip;
+    private Animation anim;
+
     // Use this for initialization
     void Start()
     {
         prevLocation = transform.position;
+        anim = GetComponent<Animation>();
+        anim.AddClip(clip, "swim");
     }
 
     // Update is called once per frame
@@ -40,6 +45,7 @@ public class JellyfishController : FishController
         {
             prevLocation = nextLocation;
             needLocation = true;
+            anim.Play("swim");
         }
     }
 
