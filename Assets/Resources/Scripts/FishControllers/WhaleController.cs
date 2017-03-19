@@ -6,7 +6,7 @@ using UnityEngine;
 public class WhaleController : FishController
 {
 
-    private float moveSpeed = .75f;
+    private float moveSpeed = 0.6f;
     
     // Update is called once per frame
     void Update()
@@ -28,5 +28,4 @@ public class WhaleController : FishController
             transform.Rotate(Vector3.forward, -90);
         }
     }
-
 }

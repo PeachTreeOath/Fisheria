@@ -25,6 +25,7 @@ public class FishController : MonoBehaviour
         {
             if (hook.castState == CastState.CASTING)
             {
+                sprite.sortingLayerName = "Overwater";
                 hooked = true;
                 hook.CaughtFish(this);
             }
