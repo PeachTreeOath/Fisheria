@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 58954415442985744}
   - component: {fileID: 50120922213608502}
   - component: {fileID: 95715746266707160}
-  - component: {fileID: 111675940414293864}
   m_Layer: 0
   m_Name: Jellyfish
   m_TagString: Untagged
@@ -86,7 +85,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1944418694437334}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 9d670e94804281e499381667c638eaae, type: 2}
   m_CullingMode: 0
@@ -96,20 +95,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111675940414293864
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1944418694437334}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 14a3f1c02bfd2e644aae6e4a1e16f78f, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &114202291511810106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,7 +111,6 @@ MonoBehaviour:
   moveSpeed: 0.5
   moveDistance: 5
   moveDelay: 2
-  clip: {fileID: 7400000, guid: 14a3f1c02bfd2e644aae6e4a1e16f78f, type: 2}
 --- !u!212 &212688750330386970
 SpriteRenderer:
   m_ObjectHideFlags: 1
