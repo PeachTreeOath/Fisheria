@@ -19,6 +19,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject whaleObj;
 
     public GameObject scoreBlockObj;
+    public Sprite troutIcon;
 
     // Use this for initialization
     protected override void Awake()
@@ -40,5 +41,6 @@ public class ResourceLoader : Singleton<ResourceLoader>
         whaleObj = Resources.Load<GameObject>("Prefabs/Fish/Whale");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
+        troutIcon = Resources.Load<Sprite>("Sprites/Fish/TroutIcon");
     }
 }
