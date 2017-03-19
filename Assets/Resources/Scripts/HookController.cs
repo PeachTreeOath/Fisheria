@@ -13,6 +13,10 @@ public class HookController : MonoBehaviour
     private float yLimit;
     private float xLimit = 8.5f;
     private SpriteRenderer sprite;
+    private SpriteRenderer lineSprite;
+    public Transform lineAttach;
+    public GameObject line;
+    public float lineStretchSpeed;
     public CastState castState;
     public Vector2 origPos;
     public Vector2 origLocalPos;
@@ -27,7 +31,8 @@ public class HookController : MonoBehaviour
     void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
-        sprite.enabled = false;
+        lineSprite = line.GetComponent<SpriteRenderer>();
+        ShowSprites(false);
         boxCollider = GetComponent<BoxCollider2D>();
         origPos = transform.position;
         origLocalPos = transform.localPosition;
@@ -40,6 +45,7 @@ public class HookController : MonoBehaviour
     {
         if (castState == CastState.CASTING)
         {
+            Stretch(line, origPos, lineAttach.position, false);
             transform.position += transform.up * lineSpeed * Time.deltaTime;
 
             if (transform.position.y > yLimit)
@@ -54,6 +60,8 @@ public class HookController : MonoBehaviour
         }
         else if (castState == CastState.REELING)
         {
+            Stretch(line, origPos, lineAttach.position, false);
+
             // TODO: Cap reel speed at set rate unless whale
             Vector2 moveVector = vectorDiff * lineSpeed * Time.deltaTime;
             transform.position += new Vector3(moveVector.x, moveVector.y, 0);
@@ -65,6 +73,19 @@ public class HookController : MonoBehaviour
         }
     }
 
+    private void Stretch(GameObject _sprite, Vector3 _initialPosition, Vector3 _finalPosition, bool _mirrorZ)
+    {
+        Vector2 centerPos = (_initialPosition + _finalPosition) / 2f;
+        _sprite.transform.position = centerPos;
+        Vector2 direction = _finalPosition - _initialPosition;
+        direction = Vector3.Normalize(direction);
+        _sprite.transform.right = direction;
+        if (_mirrorZ) _sprite.transform.right *= -1f;
+        Vector3 scale = new Vector3(1, 1, 1);
+        scale.x = Vector3.Distance(_initialPosition, _finalPosition) * lineStretchSpeed;
+        _sprite.transform.localScale = scale;
+    }
+
     public void InitCallbacks(FishermanController.CastDelegate castCb, FishermanController.CatchDelegate catchCb)
     {
         this.castCb = castCb;
@@ -74,7 +95,7 @@ public class HookController : MonoBehaviour
     public void CastHook(int maneuverSpeedLevel, int castSpeedLevel, int rangeLevel)
     {
         boxCollider.enabled = true;
-        sprite.enabled = true;
+        ShowSprites(true);
         SetVars(maneuverSpeedLevel, castSpeedLevel, rangeLevel);
         castState = CastState.CASTING;
         origPos = transform.position;
@@ -85,14 +106,14 @@ public class HookController : MonoBehaviour
     {
         catchCb(hookedObject);
         Destroy(hookedObject.gameObject);
-        sprite.enabled = false;
+        ShowSprites(false);
         transform.localPosition = origLocalPos;
         castState = CastState.READY;
     }
 
     public void EndCast()
     {
-        sprite.enabled = false;
+        ShowSprites(false);
         transform.localPosition = origLocalPos;
         castState = CastState.READY;
         castCb();
@@ -121,4 +142,11 @@ public class HookController : MonoBehaviour
         vectorDiff = origPos - (Vector2)fish.transform.position;
         hookedObject = fish;
     }
+
+    private void ShowSprites(bool show)
+    {
+        sprite.enabled = show;
+        lineSprite.enabled = show;
+    }
+
 }

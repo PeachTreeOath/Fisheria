@@ -17,12 +17,6 @@ public class RodController : MonoBehaviour
         sprite.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void Move(float direction)
     {
         float newZ = transform.rotation.eulerAngles.z + (-direction * swingSpeed * Time.deltaTime);
@@ -30,14 +24,13 @@ public class RodController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, newZ);
     }
 
-    public void SwingRod()
+    public void ShowRod(bool show)
     {
-        sprite.enabled = true;
+        sprite.enabled = show;
     }
 
     public float EndSwing()
     {
-        sprite.enabled = false;
         return transform.rotation.eulerAngles.z;
     }
 

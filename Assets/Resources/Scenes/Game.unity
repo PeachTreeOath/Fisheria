@@ -354,30 +354,6 @@ Prefab:
       propertyPath: m_Name
       value: Fisherman1
       objectReference: {fileID: 0}
-    - target: {fileID: 4518479031307254, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 114924118131427462, guid: e911a1bab7562834dbceefe4abba444f,
-        type: 2}
-      propertyPath: debugSpeedLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114924118131427462, guid: e911a1bab7562834dbceefe4abba444f,
-        type: 2}
-      propertyPath: debugRangeLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114924118131427462, guid: e911a1bab7562834dbceefe4abba444f,
-        type: 2}
-      propertyPath: debugRodLevel
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114924118131427462, guid: e911a1bab7562834dbceefe4abba444f,
-        type: 2}
-      propertyPath: debugResetLevel
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
   m_IsPrefabParent: 0
@@ -2730,7 +2706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0fba8009b9edd64bbb5df5826db3599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundTime: 600
+  roundTime: 60
 --- !u!4 &2081982828
 Transform:
   m_ObjectHideFlags: 0

@@ -45,6 +45,18 @@ public class PufferController : FishController
         }
     }
 
+    public void SetAboveWater()
+    {
+        if (isPuffed)
+        {
+            puffObj.GetComponent<SpriteRenderer>().sortingLayerName = "Overwater";
+        }
+        else
+        {
+            nonPuffObj.GetComponent<SpriteRenderer>().sortingLayerName = "Overwater";
+        }
+    }
+
     public void Spawn(Vector2 position)
     {
         transform.position = position;

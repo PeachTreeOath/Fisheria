@@ -139,7 +139,7 @@ public class FishermanController : MonoBehaviour
     private void AimRod()
     {
         castState = CastState.AIMING;
-        rod.SwingRod();
+        rod.ShowRod(true);
     }
 
     private void CastRod()
@@ -152,6 +152,7 @@ public class FishermanController : MonoBehaviour
     public void CastFinished()
     {
         castState = CastState.RESETTING;
+        rod.ShowRod(false);
         resetElapsedTime = 0;
         //TODO Temp indicator of readying cast
         GetComponent<SpriteRenderer>().color = Color.black;

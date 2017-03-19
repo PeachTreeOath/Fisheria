@@ -25,7 +25,18 @@ public class FishController : MonoBehaviour
         {
             if (hook.castState == CastState.CASTING)
             {
-                sprite.sortingLayerName = "Overwater";
+                if (sprite != null)
+                {
+                    sprite.sortingLayerName = "Overwater";
+                }
+                else
+                {
+                    PufferController puffer = GetComponent<PufferController>();
+                    if (puffer != null)
+                    {
+                        puffer.SetAboveWater();
+                    }
+                }
                 hooked = true;
                 hook.CaughtFish(this);
             }
