@@ -8,18 +8,22 @@ using UnityEngine;
 public class HookController : MonoBehaviour
 {
 
+    public Transform lineAttach;
+    public GameObject line;
+    public float lineStretchSpeed;
+    public float allowedAngle;
+
     private float angleMoveSpeed;
     private float lineSpeed;
     private float yLimit;
     private float xLimit = 8.5f;
     private SpriteRenderer sprite;
     private SpriteRenderer lineSprite;
-    public Transform lineAttach;
-    public GameObject line;
-    public float lineStretchSpeed;
+
+    [HideInInspector]
     public CastState castState;
-    public Vector2 origPos;
-    public Vector2 origLocalPos;
+    private Vector2 origPos;
+    private Vector2 origLocalPos;
     private FishermanController.CastDelegate castCb; // Callback to call when cast misses
     private FishermanController.CatchDelegate catchCb; // Callback to call when catch occurs
     private FishController hookedObject;
@@ -123,9 +127,30 @@ public class HookController : MonoBehaviour
     {
         if (castState == CastState.CASTING)
         {
-            //TODO: Limit rotation to 45 deg angles
             float angle = -direction * angleMoveSpeed * Time.deltaTime;
             transform.Rotate(Vector3.forward, angle);
+
+            float currRot = transform.rotation.eulerAngles.z;
+            if (currRot > 180)
+            {
+                currRot -= 360;
+            }
+
+            // Limit rotation to 45 deg angles
+            if (direction == -1)
+            {
+                if (currRot > allowedAngle)
+                {
+                    transform.Rotate(Vector3.forward, -angle);
+                }
+            }
+            else
+            {
+                if (currRot < -allowedAngle)
+                {
+                    transform.Rotate(Vector3.forward, -angle);
+                }
+            }
         }
     }
 

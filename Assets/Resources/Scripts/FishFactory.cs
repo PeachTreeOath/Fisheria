@@ -5,6 +5,8 @@ using UnityEngine;
 public class FishFactory : MonoBehaviour
 {
 
+    public bool factoryOn = true;
+
     private ResourceLoader loader;
     private float xLimit = 12;
     private float closeXLimit = 10;
@@ -14,19 +16,22 @@ public class FishFactory : MonoBehaviour
     {
         loader = ResourceLoader.instance;
 
-        Invoke("SpawnBass", 0);
-        Invoke("SpawnTrout", 3);
-        Invoke("SpawnOyster", 0);
-        Invoke("SpawnOyster", 0);
-        Invoke("SpawnShark", 3);
-        Invoke("SpawnSalmon", 0);
-        Invoke("SpawnPuffer", 0);
-        Invoke("SpawnPuffer", 0);
-        Invoke("SpawnPuffer", 0);
-        Invoke("SpawnJellyfish", 0);
-        Invoke("SpawnLobster", 0);
-        Invoke("SpawnLobster", 0);
-        Invoke("SpawnWhale", 0);
+        if (factoryOn)
+        {
+            Invoke("SpawnBass", 0);
+            Invoke("SpawnTrout", 3);
+            Invoke("SpawnOyster", 0);
+            Invoke("SpawnOyster", 0);
+            Invoke("SpawnShark", 3);
+            Invoke("SpawnSalmon", 0);
+            Invoke("SpawnPuffer", 0);
+            Invoke("SpawnPuffer", 0);
+            Invoke("SpawnPuffer", 0);
+            Invoke("SpawnJellyfish", 0);
+            Invoke("SpawnLobster", 0);
+            Invoke("SpawnLobster", 0);
+            Invoke("SpawnWhale", 0);
+        }
     }
 
     private int GetDirectionMultiplier(int direction)
@@ -89,7 +94,7 @@ public class FishFactory : MonoBehaviour
     private void SpawnWhale()
     {
         CreateWhale();
-        Invoke("SpawnWhale", UnityEngine.Random.Range(7, 15));
+        Invoke("SpawnWhale", UnityEngine.Random.Range(15, 25));
     }
 
     private BassController CreateBass()

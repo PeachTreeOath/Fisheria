@@ -58,12 +58,12 @@ public class FishermanController : MonoBehaviour
         {
             if (Input.GetAxis("Horizontal" + playerNum) < 0)
             {
-                float newX = Mathf.Clamp(transform.position.x - ((speedBase + (castSpeedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
+                float newX = Mathf.Clamp(transform.position.x - ((speedBase + (resetLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
             else if (Input.GetAxis("Horizontal" + playerNum) > 0)
             {
-                float newX = Mathf.Clamp(transform.position.x + ((speedBase + (castSpeedLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
+                float newX = Mathf.Clamp(transform.position.x + ((speedBase + (resetLevel * speedMult)) * Time.deltaTime), -xLimit, xLimit);
                 transform.position = new Vector2(newX, transform.position.y);
             }
 
