@@ -212,6 +212,8 @@ public class ScoreManager : MonoBehaviour
             scoreBlock.transform.Find("Canvas/Value").GetComponent<Text>().color = Color.red;
         }
         yPosition -= yPositionChange;
+        SpriteRenderer icon = scoreBlock.transform.Find("ScoreIconBg/ScoreIcon").GetComponent<SpriteRenderer>();
+        icon.sprite = null;
 
         blocks[playerNum - 1].Enqueue(block1);
         blocks[playerNum - 1].Enqueue(block2);

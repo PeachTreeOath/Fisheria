@@ -19,7 +19,18 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject whaleObj;
 
     public GameObject scoreBlockObj;
+    public Sprite greenBassIcon;
+    public Sprite blueBassIcon;
+    public Sprite redBassIcon;
     public Sprite troutIcon;
+    public Sprite oysterIcon;
+    public Sprite tigerSharkIcon;
+    public Sprite greatWhiteSharkIcon;
+    public Sprite salmonIcon;
+    public Sprite pufferIcon;
+    public Sprite jellyfishIcon;
+    public Sprite lobsterIcon;
+    public Sprite whaleIcon;
 
     // Use this for initialization
     protected override void Awake()
@@ -41,6 +52,17 @@ public class ResourceLoader : Singleton<ResourceLoader>
         whaleObj = Resources.Load<GameObject>("Prefabs/Fish/Whale");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
-        troutIcon = Resources.Load<Sprite>("Sprites/Fish/TroutIcon");
+        greenBassIcon = Resources.Load<Sprite>("Sprites/Fish/greenBassIcon");
+        blueBassIcon = Resources.Load<Sprite>("Sprites/Fish/blueBassIcon");
+        redBassIcon = Resources.Load<Sprite>("Sprites/Fish/redBassIcon");
+        troutIcon = Resources.Load<Sprite>("Sprites/Fish/troutIcon");
+        oysterIcon = Resources.Load<Sprite>("Sprites/Fish/oysterIcon");
+        tigerSharkIcon = Resources.Load<Sprite>("Sprites/Fish/tigerSharkIcon");
+        greatWhiteSharkIcon = Resources.Load<Sprite>("Sprites/Fish/greatWhiteSharkIcon");
+        salmonIcon = Resources.Load<Sprite>("Sprites/Fish/salmonIcon");
+        pufferIcon = Resources.Load<Sprite>("Sprites/Fish/pufferIcon");
+        jellyfishIcon = Resources.Load<Sprite>("Sprites/Fish/jellyfishIcon");
+        lobsterIcon = Resources.Load<Sprite>("Sprites/Fish/lobsterIcon");
+        whaleIcon = Resources.Load<Sprite>("Sprites/Fish/whaleIcon");
     }
 }
