@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlueBossController : BossController {
+public class BlueBossController : BossController
+{
 
     private float moveSpeed = 2f;
+    private float timeElapsed;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         bossBitValue = 4;
         SetColor(ResourceLoader.instance.blueMat);
     }
@@ -20,8 +23,9 @@ public class BlueBossController : BossController {
         if (!activated)
             return;
 
+        timeElapsed += Time.deltaTime;
         float newX = transform.position.x - moveSpeed * Time.deltaTime;
-        float newY = 4.5f + Mathf.Sin(Time.time);
+        float newY = 4.5f + Mathf.Sin(timeElapsed);
         transform.position = new Vector3(newX, newY, 0);
         if (transform.position.x < -xLimit)
         {
