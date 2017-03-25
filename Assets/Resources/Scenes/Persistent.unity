@@ -233,6 +233,9 @@ MonoBehaviour:
   greenMat: {fileID: 0}
   blueMat: {fileID: 0}
   redMat: {fileID: 0}
+  grayMat: {fileID: 0}
+  yellowMat: {fileID: 0}
+  pinkMat: {fileID: 0}
   bassObj: {fileID: 0}
   troutObj: {fileID: 0}
   oysterObj: {fileID: 0}
@@ -242,6 +245,7 @@ MonoBehaviour:
   jellyfishObj: {fileID: 0}
   lobsterObj: {fileID: 0}
   whaleObj: {fileID: 0}
+  bossObj: {fileID: 0}
   scoreBlockObj: {fileID: 0}
   greenBassIcon: {fileID: 0}
   blueBassIcon: {fileID: 0}

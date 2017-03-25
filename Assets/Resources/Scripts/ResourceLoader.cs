@@ -7,6 +7,9 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Material greenMat;
     public Material blueMat;
     public Material redMat;
+    public Material grayMat;
+    public Material yellowMat;
+    public Material pinkMat;
 
     public GameObject bassObj;
     public GameObject troutObj;
@@ -17,6 +20,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public GameObject jellyfishObj;
     public GameObject lobsterObj;
     public GameObject whaleObj;
+    public GameObject bossObj;
 
     public GameObject scoreBlockObj;
     public Sprite greenBassIcon;
@@ -40,8 +44,11 @@ public class ResourceLoader : Singleton<ResourceLoader>
         greenMat = Resources.Load<Material>("Materials/GreenMat");
         blueMat = Resources.Load<Material>("Materials/BlueMat");
         redMat = Resources.Load<Material>("Materials/RedMat");
+        grayMat = Resources.Load<Material>("Materials/grayMat");
+        yellowMat = Resources.Load<Material>("Materials/yellowMat");
+        pinkMat = Resources.Load<Material>("Materials/pinkMat");
 
-        bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
+    bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
         troutObj = Resources.Load<GameObject>("Prefabs/Fish/Trout");
         oysterObj = Resources.Load<GameObject>("Prefabs/Fish/Oyster");
         sharkObj = Resources.Load<GameObject>("Prefabs/Fish/Shark");
@@ -50,6 +57,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
         jellyfishObj = Resources.Load<GameObject>("Prefabs/Fish/Jellyfish");
         lobsterObj = Resources.Load<GameObject>("Prefabs/Fish/Lobster");
         whaleObj = Resources.Load<GameObject>("Prefabs/Fish/Whale");
+        bossObj = Resources.Load<GameObject>("Prefabs/Fish/Boss");
 
         scoreBlockObj = Resources.Load<GameObject>("Prefabs/ScoreBlock");
         greenBassIcon = Resources.Load<Sprite>("Sprites/Fish/greenBassIcon");
