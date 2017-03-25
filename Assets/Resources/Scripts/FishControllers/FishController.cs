@@ -13,6 +13,7 @@ public class FishController : MonoBehaviour
     protected virtual void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        gameObject.AddComponent<FishRemover>();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)

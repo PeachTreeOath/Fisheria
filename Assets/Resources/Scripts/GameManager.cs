@@ -11,12 +11,16 @@ public class GameManager : Singleton<GameManager>
     private Text timeText;
     private FishermanController[] players;
 
+    // Keep track of which bosses have been hit by which players with bitmask
+    private int[] bossHits;
+
     // Use this for initialization
     protected override void Awake()
     {
         base.Awake();
 
         players = new FishermanController[4];
+        bossHits = new int[4];
         timeText = GameObject.Find("TimeText").GetComponent<Text>();
     }
 
@@ -35,6 +39,16 @@ public class GameManager : Singleton<GameManager>
         if (roundTime < 0)
         {
             RoundOver();
+        }
+    }
+
+    public void HitBoss(int player, int bossBitValue)
+    {
+        bossHits[player] ^= bossBitValue;
+        if (bossHits[player] == 31)
+        {
+            //TODO: Real win condition
+            Debug.Log("GAME OVER");
         }
     }
 

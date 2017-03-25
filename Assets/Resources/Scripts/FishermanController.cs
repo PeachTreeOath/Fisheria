@@ -6,7 +6,7 @@ public class FishermanController : MonoBehaviour
 {
 
     // State
-    public int playerNum;
+    public int playerNum; // 1-indexed
     public float speedBase;
     public float speedMult;
     public List<FishController> catchList;

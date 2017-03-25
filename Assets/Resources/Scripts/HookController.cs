@@ -123,14 +123,6 @@ public class HookController : MonoBehaviour
         castCb();
     }
 
-    public void InstantEndCast()
-    {
-        ShowSprites(false);
-        transform.localPosition = origLocalPos;
-        castState = CastState.READY;
-        castCb();
-    }
-
     public void Move(float direction)
     {
         if (castState == CastState.CASTING)

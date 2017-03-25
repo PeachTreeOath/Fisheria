@@ -48,7 +48,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
         yellowMat = Resources.Load<Material>("Materials/yellowMat");
         pinkMat = Resources.Load<Material>("Materials/pinkMat");
 
-    bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
+        bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
         troutObj = Resources.Load<GameObject>("Prefabs/Fish/Trout");
         oysterObj = Resources.Load<GameObject>("Prefabs/Fish/Oyster");
         sharkObj = Resources.Load<GameObject>("Prefabs/Fish/Shark");
