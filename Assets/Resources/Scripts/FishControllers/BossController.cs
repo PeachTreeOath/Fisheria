@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossController : MonoBehaviour {
+public class BossController : MonoBehaviour
+{
 
     private float activationTime = 2;
 
@@ -32,7 +33,7 @@ public class BossController : MonoBehaviour {
             return;
 
         activatedTime += Time.deltaTime;
-        if(activatedTime > activationTime)
+        if (activatedTime > activationTime)
         {
             activated = true;
         }
@@ -47,6 +48,7 @@ public class BossController : MonoBehaviour {
     {
         bossCape.material = mat;
         bossFace.material = mat;
+        transform.Find("AfterImageSystem").GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", mat.GetColor("_Color"));
     }
 
     protected void ToggleSprite(bool toggle)
