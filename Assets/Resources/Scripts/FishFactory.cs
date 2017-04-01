@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FishFactory : MonoBehaviour
 {
@@ -39,32 +40,7 @@ public class FishFactory : MonoBehaviour
             SpawnBoss(4);
         }
     }
-
-    private void SpawnBoss(int bossType)
-    {
-        GameObject bossObj = Instantiate<GameObject>(loader.bossObj);
-
-        switch (bossType)
-        {
-            case 0:
-                bossObj.AddComponent<RedBossController>().Spawn(new Vector2(0, 4.5f));
-                break;
-            case 1:
-                bossObj.AddComponent<BlackBossController>().Spawn(new Vector2(-1, 4.5f));
-                break;
-            case 2:
-                bossObj.AddComponent<BlueBossController>().Spawn(new Vector2(1, 4.5f));
-                break;
-            case 3:
-                bossObj.AddComponent<YellowBossController>().Spawn(new Vector2(-2, 4.5f));
-                break;
-            case 4:
-                bossObj.AddComponent<PinkBossController>().Spawn(new Vector2(2, 4.5f));
-                break;
-        }
-
-    }
-
+    
     private int GetDirectionMultiplier(int direction)
     {
         if (direction == 0)
@@ -119,17 +95,44 @@ public class FishFactory : MonoBehaviour
     private void SpawnLobster()
     {
         CreateLobster();
-        Invoke("SpawnLobster", UnityEngine.Random.Range(5, 15));
+        Invoke("SpawnLobster", UnityEngine.Random.Range(5, 20));
     }
 
     private void SpawnWhale()
     {
         CreateWhale();
-        Invoke("SpawnWhale", UnityEngine.Random.Range(15, 25));
+        Invoke("SpawnWhale", UnityEngine.Random.Range(20, 35));
+    }
+
+    private void SpawnBoss(int bossType)
+    {
+        GameObject bossObj = Instantiate<GameObject>(loader.bossObj);
+
+        switch (bossType)
+        {
+            case 0:
+                bossObj.AddComponent<RedBossController>().Spawn(new Vector2(0, 4.5f));
+                break;
+            case 1:
+                bossObj.AddComponent<BlackBossController>().Spawn(new Vector2(-1, 4.5f));
+                break;
+            case 2:
+                bossObj.AddComponent<BlueBossController>().Spawn(new Vector2(1, 4.5f));
+                break;
+            case 3:
+                bossObj.AddComponent<YellowBossController>().Spawn(new Vector2(-2, 4.5f));
+                break;
+            case 4:
+                bossObj.AddComponent<PinkBossController>().Spawn(new Vector2(2, 4.5f));
+                break;
+        }
+
     }
 
     private BassController CreateBass()
     {
+        Scene scene = SceneManager.GetActiveScene();
+
         int choice = UnityEngine.Random.Range(0, 20);
         float yValue = UnityEngine.Random.Range(-4.25f, -3.25f);
         int direction = UnityEngine.Random.Range(0, 2);
@@ -205,6 +208,8 @@ public class FishFactory : MonoBehaviour
 
     private SalmonController CreateSalmon()
     {
+        Scene scene = SceneManager.GetActiveScene();
+
         float yValue = UnityEngine.Random.Range(-2.75f, -0.25f);
         int direction = UnityEngine.Random.Range(0, 2);
         float speed = UnityEngine.Random.Range(1f, 3f);

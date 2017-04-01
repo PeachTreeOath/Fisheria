@@ -6,7 +6,7 @@ public class YellowBossController : BossController
 {
     private float flashInterval = 2.5f;
     private float teleportInterval = 3f;
-    private float teleportTime;
+    private float teleportTime = 2f;
     private bool flashed;
 
     // Use this for initialization

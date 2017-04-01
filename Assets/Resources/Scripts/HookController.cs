@@ -156,7 +156,7 @@ public class HookController : MonoBehaviour
 
     private void SetVars(int maneuverSpeedLevel, int castSpeedLevel, int rangeLevel)
     {
-        angleMoveSpeed = maneuverSpeedLevel * 8;
+        angleMoveSpeed = maneuverSpeedLevel * 12;
         lineSpeed = castSpeedLevel * 0.75f;
         yLimit = -6f + rangeLevel * 3f;
     }

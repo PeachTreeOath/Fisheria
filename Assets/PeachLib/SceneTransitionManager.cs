@@ -27,7 +27,7 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));
     }
 
     public void GoToScore()
@@ -35,10 +35,8 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         string nextSceneName = "Score";
         SceneManager.UnloadSceneAsync("Game");
 
-        tempScene = SceneManager.CreateScene(tempSceneName);
-        SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), false));
     }
 
     public void GoToGame()
@@ -49,10 +47,12 @@ public class SceneTransitionManager : Singleton<SceneTransitionManager>
         tempScene = SceneManager.CreateScene(tempSceneName);
         SceneManager.SetActiveScene(tempScene);
         SceneManager.LoadScene(nextSceneName, LoadSceneMode.Additive);
-        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName)));
+        StartCoroutine(SetActive(SceneManager.GetSceneByName(nextSceneName), true));
     }
 
-    public IEnumerator SetActive(Scene scene)
+    // You only need to use mergeTempScene if you are potentially
+    // instantiating objects on the first frame of scene startup
+    public IEnumerator SetActive(Scene scene, bool mergeTempScene)
     {
         int i = 0;
         while (i == 0)
