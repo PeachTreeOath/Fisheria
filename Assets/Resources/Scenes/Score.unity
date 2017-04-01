@@ -134,51 +134,6 @@ Prefab:
       propertyPath: m_Name
       value: ScorePanel1
       objectReference: {fileID: 0}
-    - target: {fileID: 114712505285349362, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 700
-      objectReference: {fileID: 0}
-    - target: {fileID: 114026946333015312, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114140273132094852, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 114244455521136690, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114104952432792680, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 114150481228279446, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 114407722336028772, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 114190985161657628, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 114308545880139584, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
-        type: 2}
-      propertyPath: cost
-      value: 150
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c41fe3ff8e271c049a628c5ad1b1ea83, type: 2}
   m_IsPrefabParent: 0
