@@ -134,6 +134,51 @@ Prefab:
       propertyPath: m_Name
       value: ScorePanel1
       objectReference: {fileID: 0}
+    - target: {fileID: 114712505285349362, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 114026946333015312, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114140273132094852, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114244455521136690, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114104952432792680, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 114150481228279446, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114407722336028772, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114190985161657628, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308545880139584, guid: c41fe3ff8e271c049a628c5ad1b1ea83,
+        type: 2}
+      propertyPath: cost
+      value: 150
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c41fe3ff8e271c049a628c5ad1b1ea83, type: 2}
   m_IsPrefabParent: 0
@@ -452,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 587c35fa25f0ab943af813c785394a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTestingOn: 1
+  isTestingOn: 0
 --- !u!114 &802442504
 MonoBehaviour:
   m_ObjectHideFlags: 0

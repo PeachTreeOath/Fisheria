@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Gloves 3
   desc: High hook maneuverability
-  cost: 300
+  cost: 200
 --- !u!114 &114102235827497166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Boots 3
   desc: 9 kph line speed
-  cost: 200
+  cost: 300
 --- !u!114 &114140273132094852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Gloves 2
   desc: Medium hook maneuverability
-  cost: 100
+  cost: 50
 --- !u!114 &114150481228279446
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2433,7 +2433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Boots 2
   desc: 6 kph line speed
-  cost: 50
+  cost: 100
 --- !u!114 &114190985161657628
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Hat 4
   desc: 0 sec reload speed Fastest walk speed
-  cost: 200
+  cost: 400
 --- !u!114 &114217274533220908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2494,7 +2494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Boots 4
   desc: 12 kph line speed
-  cost: 500
+  cost: 1000
 --- !u!114 &114251424485635124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2569,7 +2569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Hat 3
   desc: 1 sec reload speed Fast walk speed
-  cost: 100
+  cost: 150
 --- !u!114 &114319164055544366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2696,7 +2696,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Rod 4
   desc: Access Zone 4
-  cost: 750
+  cost: 1000
 --- !u!114 &114427512176937066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3037,7 +3037,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Gloves 4
   desc: Max hook maneuverability
-  cost: 750
+  cost: 700
 --- !u!114 &114716126352512460
 MonoBehaviour:
   m_ObjectHideFlags: 1

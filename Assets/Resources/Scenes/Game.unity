@@ -348,7 +348,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4081702234243618, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1983955302357428, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
       propertyPath: m_Name
@@ -633,7 +633,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: cfddd81c1712bf14d8309670d6f51831,
+      objectReference: {fileID: 21300000, guid: 32002eb6145c6f6479b96ad9591ea3ec,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
@@ -1558,7 +1558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1245637853
 GameObject:
@@ -1744,7 +1744,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: bfa568988badcad408cf6423cd219f41,
+      objectReference: {fileID: 21300000, guid: c6acff179495ebb4296c38aaded12f9b,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
@@ -1960,7 +1960,7 @@ Prefab:
         type: 2}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: a1b3b8441b9127f4391ae0bc37df7e44,
+      objectReference: {fileID: 21300000, guid: 8b5d8d7628f237248b50e5c13cd10887,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e911a1bab7562834dbceefe4abba444f, type: 2}
