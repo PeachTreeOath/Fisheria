@@ -48,5 +48,6 @@ public class BassController : FishController
             default:
                 break;
         }
+        startingMat = sprite.material;
     }
 }

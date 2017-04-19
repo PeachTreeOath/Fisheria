@@ -10,6 +10,7 @@ public class ResourceLoader : Singleton<ResourceLoader>
     public Material grayMat;
     public Material yellowMat;
     public Material pinkMat;
+    public Material displacementMat;
 
     public GameObject bassObj;
     public GameObject troutObj;
@@ -44,9 +45,10 @@ public class ResourceLoader : Singleton<ResourceLoader>
         greenMat = Resources.Load<Material>("Materials/GreenMat");
         blueMat = Resources.Load<Material>("Materials/BlueMat");
         redMat = Resources.Load<Material>("Materials/RedMat");
-        grayMat = Resources.Load<Material>("Materials/grayMat");
-        yellowMat = Resources.Load<Material>("Materials/yellowMat");
-        pinkMat = Resources.Load<Material>("Materials/pinkMat");
+        grayMat = Resources.Load<Material>("Materials/GrayMat");
+        yellowMat = Resources.Load<Material>("Materials/YellowMat");
+        pinkMat = Resources.Load<Material>("Materials/PinkMat");
+        displacementMat = Resources.Load<Material>("Materials/DisplacementMat");
 
         bassObj = Resources.Load<GameObject>("Prefabs/Fish/Bass");
         troutObj = Resources.Load<GameObject>("Prefabs/Fish/Trout");

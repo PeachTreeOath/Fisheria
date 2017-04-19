@@ -10,10 +10,14 @@ public class FishController : MonoBehaviour
 
     public FishType type { get; set; }
 
+    protected Material startingMat;
+
     protected virtual void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
         gameObject.AddComponent<FishRemover>();
+        startingMat = sprite.material;
+        sprite.material = ResourceLoader.instance.displacementMat;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D col)
@@ -37,6 +41,10 @@ public class FishController : MonoBehaviour
                     {
                         puffer.SetAboveWater();
                     }
+                }
+                if (startingMat != null)
+                {
+                    sprite.material = startingMat;
                 }
                 hooked = true;
                 hook.CaughtFish(this);
