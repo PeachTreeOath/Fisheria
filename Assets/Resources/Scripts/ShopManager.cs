@@ -63,8 +63,8 @@ public class ShopManager : MonoBehaviour
             // Save gold
             gear.gold = gold;
 
-            //TODO: Check for all ready
             SceneTransitionManager.instance.GoToGame();
+//ShopExitManager.instance.Finished(playerNum);
         }
         else
         {
